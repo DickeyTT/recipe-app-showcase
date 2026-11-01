@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "Baking/Rosemary_Focaccia.md",
+  "isRecipe": true,
+  "cleanTitle": "Rosemary focaccia",
+  "categories": [
+    "italian",
+    "bread-baking"
+  ],
+  "cuisine": "italian",
+  "mainIngredient": null,
+  "ingredients": [
+    "flour",
+    "yeast",
+    "olive oil",
+    "rosemary",
+    "sea salt"
+  ],
+  "tags": [
+    "#project",
+    "#make-ahead"
+  ],
+  "likelyDuplicateOf": null,
+  "confidence": 0.9,
+  "notes": ""
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "Weeknight/Pasta_with_Courgette_and_Mint.md",
+  "isRecipe": true,
+  "cleanTitle": "Pasta with courgette and mint",
+  "categories": [
+    "italian",
+    "vegetarian",
+    "pasta-noodles"
+  ],
+  "cuisine": "italian",
+  "mainIngredient": "courgette",
+  "ingredients": [
+    "spaghetti",
+    "courgette",
+    "mint",
+    "parmesan",
+    "garlic"
+  ],
+  "tags": [
+    "#quick",
+    "#weeknight"
+  ],
+  "likelyDuplicateOf": null,
+  "confidence": 0.9,
+  "notes": ""
+}

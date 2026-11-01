@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "Baking/Brown_Butter_Banana_Bread.md",
+  "isRecipe": true,
+  "cleanTitle": "Brown butter banana bread",
+  "categories": [
+    "bread-baking"
+  ],
+  "cuisine": null,
+  "mainIngredient": null,
+  "ingredients": [
+    "banana",
+    "butter",
+    "flour",
+    "brown sugar",
+    "egg"
+  ],
+  "tags": [
+    "#easy",
+    "#freezable"
+  ],
+  "likelyDuplicateOf": null,
+  "confidence": 0.9,
+  "notes": ""
+}

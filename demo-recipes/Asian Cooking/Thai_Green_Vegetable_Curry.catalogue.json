@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "Asian Cooking/Thai_Green_Vegetable_Curry.md",
+  "isRecipe": true,
+  "cleanTitle": "Thai green vegetable curry",
+  "categories": [
+    "thai",
+    "vegetarian",
+    "curries-stews"
+  ],
+  "cuisine": "thai",
+  "mainIngredient": "aubergine",
+  "ingredients": [
+    "aubergine",
+    "green bean",
+    "coconut milk",
+    "green curry paste",
+    "basil"
+  ],
+  "tags": [
+    "#spicy",
+    "#veggie-option"
+  ],
+  "likelyDuplicateOf": null,
+  "confidence": 0.9,
+  "notes": ""
+}

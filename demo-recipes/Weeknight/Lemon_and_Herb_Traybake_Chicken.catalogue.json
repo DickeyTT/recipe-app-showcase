@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "Weeknight/Lemon_and_Herb_Traybake_Chicken.md",
+  "isRecipe": true,
+  "cleanTitle": "Lemon and herb traybake chicken",
+  "categories": [
+    "meat",
+    "main-dishes"
+  ],
+  "cuisine": null,
+  "mainIngredient": "chicken thigh",
+  "ingredients": [
+    "chicken thigh",
+    "new potato",
+    "lemon",
+    "garlic",
+    "thyme",
+    "olive oil"
+  ],
+  "tags": [
+    "#traybake",
+    "#weeknight",
+    "#easy"
+  ],
+  "likelyDuplicateOf": null,
+  "confidence": 0.9,
+  "notes": ""
+}

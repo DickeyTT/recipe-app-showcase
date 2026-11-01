@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "Asian Cooking/Simple_Cucumber_Kimchi.md",
+  "isRecipe": true,
+  "cleanTitle": "Simple cucumber kimchi",
+  "categories": [
+    "korean",
+    "vegetarian",
+    "ferments-pickles"
+  ],
+  "cuisine": "korean",
+  "mainIngredient": "cucumber",
+  "ingredients": [
+    "cucumber",
+    "gochugaru",
+    "spring onion",
+    "garlic"
+  ],
+  "tags": [
+    "#make-ahead",
+    "#spicy"
+  ],
+  "likelyDuplicateOf": null,
+  "confidence": 0.9,
+  "notes": ""
+}

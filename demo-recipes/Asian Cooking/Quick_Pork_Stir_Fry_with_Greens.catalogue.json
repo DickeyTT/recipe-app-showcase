@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "Asian Cooking/Quick_Pork_Stir_Fry_with_Greens.md",
+  "isRecipe": true,
+  "cleanTitle": "Quick pork stir-fry with greens",
+  "categories": [
+    "chinese",
+    "meat",
+    "main-dishes"
+  ],
+  "cuisine": "chinese",
+  "mainIngredient": "pork",
+  "ingredients": [
+    "pork mince",
+    "pak choi",
+    "ginger",
+    "garlic",
+    "soy sauce",
+    "rice"
+  ],
+  "tags": [
+    "#stir-fry",
+    "#quick"
+  ],
+  "likelyDuplicateOf": null,
+  "confidence": 0.9,
+  "notes": ""
+}

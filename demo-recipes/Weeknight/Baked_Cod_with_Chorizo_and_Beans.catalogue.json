@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "Weeknight/Baked_Cod_with_Chorizo_and_Beans.md",
+  "isRecipe": true,
+  "cleanTitle": "Baked cod with chorizo and beans",
+  "categories": [
+    "spanish-portuguese",
+    "fish",
+    "main-dishes"
+  ],
+  "cuisine": "spanish-portuguese",
+  "mainIngredient": "cod",
+  "ingredients": [
+    "cod",
+    "chorizo",
+    "butter bean",
+    "tomato",
+    "parsley"
+  ],
+  "tags": [
+    "#one-pot",
+    "#weeknight"
+  ],
+  "likelyDuplicateOf": null,
+  "confidence": 0.9,
+  "notes": ""
+}

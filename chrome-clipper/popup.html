@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RecipeApp Clipper</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --accent: #b4532a;
+        --fg: #1c1c1e;
+        --muted: #6b6b70;
+        --bg: #ffffff;
+        --field: #f4f4f5;
+        --line: #e2e2e4;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --fg: #f2f2f4;
+          --muted: #9a9aa0;
+          --bg: #1c1c1e;
+          --field: #2c2c2e;
+          --line: #3a3a3c;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        width: 380px;
+        margin: 0;
+        padding: 14px 16px;
+        font: 13px/1.4 -apple-system, system-ui, sans-serif;
+        color: var(--fg);
+        background: var(--bg);
+      }
+      h1 { font-size: 14px; margin: 0 0 2px; }
+      .sub { color: var(--muted); margin: 0 0 12px; }
+      button {
+        padding: 9px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+      }
+      button.primary { color: #fff; background: var(--accent); width: 100%; }
+      button.secondary {
+        color: var(--fg);
+        background: var(--field);
+        border: 1px solid var(--line);
+      }
+      button:disabled { opacity: 0.5; cursor: default; }
+      #status { margin-top: 10px; color: var(--muted); min-height: 1.4em; white-space: pre-line; }
+
+      .hidden { display: none; }
+      label { display: block; font-weight: 600; margin: 12px 0 4px; }
+      input[type="text"], textarea {
+        width: 100%;
+        padding: 7px 9px;
+        font: inherit;
+        color: var(--fg);
+        background: var(--field);
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        resize: vertical;
+      }
+      textarea { min-height: 72px; }
+      .hint { color: var(--muted); font-weight: 400; font-size: 12px; }
+      .image-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+      .image-row img {
+        width: 56px; height: 56px; object-fit: cover;
+        border-radius: 7px; border: 1px solid var(--line);
+      }
+      .image-row label { margin: 0; font-weight: 400; }
+      .actions { display: flex; gap: 8px; margin-top: 16px; }
+      .actions .primary { flex: 1; }
+      .via { color: var(--muted); font-size: 12px; margin: 10px 0 0; }
+      .modes { display: flex; gap: 0; margin-bottom: 4px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+      .modes button {
+        flex: 1; border: none; border-radius: 0; font-weight: 600;
+        background: var(--field); color: var(--fg); padding: 8px;
+      }
+      .modes button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+      select { width: 100%; padding: 7px 9px; font: inherit; color: var(--fg); background: var(--field); border: 1px solid var(--line); border-radius: 7px; }
+      .checklist { max-height: 132px; overflow-y: auto; border: 1px solid var(--line); border-radius: 7px; padding: 6px 8px; background: var(--field); }
+      .checklist .section { font-weight: 600; color: var(--muted); font-size: 11px; text-transform: uppercase; margin: 6px 0 2px; }
+      .checklist label { display: block; font-weight: 400; margin: 2px 0; }
+      .checklist label.child { padding-left: 14px; }
+    </style>
+  </head>
+  <body>
+    <h1>RecipeApp Clipper</h1>
+    <p class="sub">Capture this page into your recipe library.</p>
+
+    <!-- View 1: capture -->
+    <section id="capture-view">
+      <button id="clip" class="primary" type="button">Clip this recipe</button>
+      <p id="status">Open a recipe page, then clip it.</p>
+    </section>
+
+    <!-- View 2: editable preview -->
+    <section id="preview-view" class="hidden">
+      <div class="modes" role="group" aria-label="Clip detail">
+        <button id="mode-basic" type="button" aria-pressed="false">Basic</button>
+        <button id="mode-full" type="button" aria-pressed="true">Full</button>
+      </div>
+      <p class="hint" id="mode-hint"></p>
+
+      <label for="notebook">Notebook <span class="hint">which collection to file it under</span></label>
+      <select id="notebook"></select>
+      <input id="notebook-new" type="text" placeholder="New notebook name" class="hidden" style="margin-top:6px;" />
+
+      <label for="title">Title</label>
+      <input id="title" type="text" />
+
+      <div class="image-row" id="image-row">
+        <img id="image-preview" alt="" />
+        <label><input id="include-image" type="checkbox" checked /> Include image</label>
+      </div>
+
+      <label for="ingredients">Ingredients <span class="hint">one per line</span></label>
+      <textarea id="ingredients"></textarea>
+
+      <label for="method">Method <span class="hint">one step per line</span></label>
+      <textarea id="method"></textarea>
+
+      <div id="extra-section">
+        <label for="extra">Notes &amp; extra text <span class="hint">tips, FAQs, storage; trim anything you don't want</span></label>
+        <textarea id="extra" style="min-height: 120px;"></textarea>
+        <p class="hint" id="images-hint"></p>
+      </div>
+
+      <label>Categories <span class="hint">for browsing and search</span></label>
+      <div id="categories-box" class="checklist"></div>
+
+      <label>Tags <span class="hint" id="tags-count"></span></label>
+      <div id="tags-box" class="checklist"></div>
+
+      <p class="via" id="via"></p>
+
+      <div class="actions">
+        <button id="back" class="secondary" type="button">Back</button>
+        <button id="save" class="primary" type="button">Save to library</button>
+      </div>
+      <p id="save-status"></p>
+    </section>
+
+    <script src="lib/markdown.js"></script>
+    <script src="lib/catalogue.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

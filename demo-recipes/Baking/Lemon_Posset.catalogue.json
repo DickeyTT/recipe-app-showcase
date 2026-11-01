@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "Baking/Lemon_Posset.md",
+  "isRecipe": true,
+  "cleanTitle": "Lemon posset",
+  "categories": [
+    "british",
+    "desserts"
+  ],
+  "cuisine": "british",
+  "mainIngredient": null,
+  "ingredients": [
+    "double cream",
+    "lemon",
+    "sugar"
+  ],
+  "tags": [
+    "#make-ahead",
+    "#entertaining",
+    "#gluten-free"
+  ],
+  "likelyDuplicateOf": null,
+  "confidence": 0.9,
+  "notes": ""
+}

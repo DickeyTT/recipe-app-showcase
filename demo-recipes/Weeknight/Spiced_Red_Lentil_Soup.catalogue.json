@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "Weeknight/Spiced_Red_Lentil_Soup.md",
+  "isRecipe": true,
+  "cleanTitle": "Spiced red lentil soup",
+  "categories": [
+    "middle-eastern",
+    "vegetarian",
+    "soups"
+  ],
+  "cuisine": "middle-eastern",
+  "mainIngredient": "red lentil",
+  "ingredients": [
+    "red lentil",
+    "onion",
+    "carrot",
+    "cumin",
+    "vegetable stock",
+    "lemon"
+  ],
+  "tags": [
+    "#one-pot",
+    "#freezable",
+    "#vegan"
+  ],
+  "likelyDuplicateOf": null,
+  "confidence": 0.9,
+  "notes": ""
+}
