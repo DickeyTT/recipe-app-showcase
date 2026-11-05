@@ -1,7 +1,33 @@
 import SwiftUI
 import RecipeCore
+import UIKit
 import UniformTypeIdentifiers
 import QuickLook
+
+/// iPadOS 15 has no NavigationSplitView visibility API, so collapse the sidebar
+/// by nudging the underlying split view controller. The system keeps the toggle
+/// button to reopen it.
+enum SidebarControl {
+  static func collapse() {
+    for scene in UIApplication.shared.connectedScenes {
+      guard let windowScene = scene as? UIWindowScene else { continue }
+      for window in windowScene.windows {
+        if let split = window.rootViewController?.firstSplitViewController {
+          split.preferredDisplayMode = .secondaryOnly
+          return
+        }
+      }
+    }
+  }
+}
+
+private extension UIViewController {
+  var firstSplitViewController: UISplitViewController? {
+    if let split = self as? UISplitViewController { return split }
+    for child in children { if let found = child.firstSplitViewController { return found } }
+    return presentedViewController?.firstSplitViewController
+  }
+}
 
 @main
 struct RecipeMobileApp: App {
@@ -24,11 +50,21 @@ struct RecipeMobileApp: App {
       #if DEBUG
       seedTestLibraryIfEmpty()
       #endif
+      backfillThumbnails()
     } catch { self.error = error.localizedDescription }
   }
   func refresh() {
     do { recipes = try store?.recipes() ?? [] }
     catch { self.error = error.localizedDescription }
+  }
+  /// Generate any missing thumbnails off the main thread, then refresh so the grid
+  /// shows the small images instead of decoding full-size hero photos.
+  func backfillThumbnails() {
+    guard let store else { return }
+    DispatchQueue.global(qos: .utility).async {
+      try? store.backfillThumbnails()
+      DispatchQueue.main.async { self.refresh() }
+    }
   }
   func refreshRecipe(_ id: UUID) {
     do {
@@ -94,7 +130,7 @@ struct RecipeMobileApp: App {
     DispatchQueue.global().async {
       do {
         try SyncClient.sync(store: store, to: mac.endpoint, pairingCode: pairingCode)
-        DispatchQueue.main.async { self.refresh(); self.loadLastSync(); self.syncing = false }
+        DispatchQueue.main.async { self.refresh(); self.loadLastSync(); self.syncing = false; self.backfillThumbnails() }
       } catch {
         DispatchQueue.main.async { self.error = error.localizedDescription; self.syncing = false }
       }
@@ -144,6 +180,8 @@ struct MobileLibraryView: View {
   @State private var settledQuery = ""
   @State private var tokens: [SearchToken] = []
   @State private var showingSync = false
+  @Environment(\.horizontalSizeClass) private var hSize
+  @AppStorage("gridColumns") private var gridColumns = 4
   var results: [Recipe] {
     let categoryIDs = tokens.compactMap { token -> String? in if case .category(let id, _) = token { return id } else { return nil } }
     let tagNames = tokens.compactMap { token -> String? in if case .tag(let name) = token { return name } else { return nil } }
@@ -162,7 +200,14 @@ struct MobileLibraryView: View {
     default: return "All recipes"
     }
   }
-  private let columns = [GridItem(.adaptive(minimum: 160), spacing: 14)]
+  // iPad (regular width) uses a fixed number of columns the user picks; iPhone
+  // (compact) keeps the adaptive two-ish columns.
+  private var gridItems: [GridItem] {
+    if hSize == .regular {
+      return Array(repeating: GridItem(.flexible(), spacing: 14), count: gridColumns)
+    }
+    return [GridItem(.adaptive(minimum: 160), spacing: 14)]
+  }
   private var allTags: [String] { Array(Set(library.recipes.flatMap { $0.tags ?? [] })).sorted() }
   private var searchSuggestions: [SearchToken] {
     let q = query.trimmingCharacters(in: .whitespaces).lowercased()
@@ -177,87 +222,173 @@ struct MobileLibraryView: View {
   private func toggleToken(_ token: SearchToken) {
     if let index = tokens.firstIndex(of: token) { tokens.remove(at: index) } else { tokens.append(token) }
   }
-  var body: some View {
-    AdaptiveNavigation {
-      ScrollView {
-        if results.isEmpty {
-          Text(library.recipes.isEmpty ? "No recipes yet. Sync from the Mac to add recipes." : "No matching recipes.")
-            .foregroundStyle(.secondary).multilineTextAlignment(.center).padding(.top, 48).padding(.horizontal, 24)
-        } else {
-          LazyVGrid(columns: columns, spacing: 14) {
-            ForEach(results) { recipe in
-              NavigationLink(destination: MobileRecipeView(recipeID: recipe.id)) {
-                VStack(alignment: .leading, spacing: 6) {
-                  MobileRecipeImage(path: recipe.thumbnailPath ?? recipe.heroImagePath, thumbnail: true, fill: true, placeholderTitle: recipe.title, placeholderCollection: recipe.collection)
-                    .frame(height: 120).frame(maxWidth: .infinity).clipped()
-                  Text(recipe.title).font(.subheadline.weight(.semibold)).lineLimit(2)
-                    .multilineTextAlignment(.leading).foregroundStyle(.primary)
-                  HStack(spacing: 4) {
-                    Text(recipe.collection).font(.caption).foregroundStyle(.secondary).lineLimit(1)
-                    Spacer(minLength: 2)
-                    if recipe.favourite { Image(systemName: "heart.fill").font(.caption).foregroundStyle(.tint).accessibilityLabel("Favourite") }
-                  }
-                }
-              }.buttonStyle(.plain)
-            }
-          }.padding(16)
-          Text("\(results.count) items · Stored on this device").font(.caption).foregroundStyle(.secondary).padding(.bottom, 20)
-        }
+  private var selectionBinding: Binding<LibrarySection?> {
+    Binding(get: { section }, set: { if let value = $0 { section = value } })
+  }
+  // iPad sidebar: the same sections the iPhone offers, plus the notebooks.
+  private var sidebar: some View {
+    List(selection: selectionBinding) {
+      Section {
+        Label("All recipes", systemImage: "books.vertical").tag(LibrarySection.all)
+        Label("Favourites", systemImage: "heart").tag(LibrarySection.favourites)
+        Label("Notes", systemImage: "note.text").tag(LibrarySection.notes)
       }
-      .navigationTitle(sectionName)
-      .task(id: query) {
-        do { try await Task.sleep(nanoseconds: 200_000_000) } catch { return }
-        if !Task.isCancelled { settledQuery = query }
-      }
-      .modifier(TokenSearchable(query: $query, tokens: $tokens, suggestions: searchSuggestions))
-      .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Menu {
-            Picker("Library", selection: $section) {
-              Text("All recipes").tag(LibrarySection.all)
-              Text("Favourites").tag(LibrarySection.favourites)
-              Text("Notes").tag(LibrarySection.notes)
-            }
-            if !LibraryBrowse.collections(library.recipes).isEmpty {
-              Picker("Collection", selection: $section) {
-                ForEach(LibraryBrowse.collections(library.recipes)) { collection in
-                  Text("\(collection.name) (\(collection.count))").tag(LibrarySection.collection(collection.name))
-                }
-              }
-            }
-          } label: { Label("Library", systemImage: "books.vertical") }
-        }
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Menu {
-            Menu("Category") {
-              ForEach(LibraryBrowse.categories(library.recipes)) { category in
-                let token = SearchToken.category(id: category.id, name: category.name)
-                Button { toggleToken(token) } label: {
-                  if tokens.contains(token) { Label("\(category.name) (\(category.count))", systemImage: "checkmark") }
-                  else { Text("\(category.name) (\(category.count))") }
-                }
-              }
-            }
-            Menu("Tag") {
-              ForEach(allTags, id: \.self) { tag in
-                let token = SearchToken.tag(tag)
-                Button { toggleToken(token) } label: {
-                  if tokens.contains(token) { Label("#" + tag, systemImage: "checkmark") } else { Text("#" + tag) }
-                }
-              }
-            }
-            if !tokens.isEmpty { Divider(); Button("Clear filters") { tokens = [] } }
-          } label: {
-            Label("Filter", systemImage: tokens.isEmpty ? "line.3.horizontal.decrease.circle" : "line.3.horizontal.decrease.circle.fill")
+      let collections = LibraryBrowse.collections(library.recipes)
+      if !collections.isEmpty {
+        Section("Collections") {
+          ForEach(collections) { collection in
+            HStack {
+              Label(collection.name, systemImage: "folder")
+              Spacer(minLength: 8)
+              Text("\(collection.count)").foregroundStyle(.secondary)
+            }.tag(LibrarySection.collection(collection.name))
           }
-        }
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button { showingSync = true } label: { Label("Sync", systemImage: "arrow.triangle.2.circlepath") }
         }
       }
     }
+    .listStyle(.sidebar)
+    .navigationTitle("Library")
+  }
+  private var libraryMenu: some View {
+    Menu {
+      Picker("Library", selection: $section) {
+        Text("All recipes").tag(LibrarySection.all)
+        Text("Favourites").tag(LibrarySection.favourites)
+        Text("Notes").tag(LibrarySection.notes)
+      }
+      if !LibraryBrowse.collections(library.recipes).isEmpty {
+        Picker("Collection", selection: $section) {
+          ForEach(LibraryBrowse.collections(library.recipes)) { collection in
+            Text("\(collection.name) (\(collection.count))").tag(LibrarySection.collection(collection.name))
+          }
+        }
+      }
+    } label: { Label("Library", systemImage: "books.vertical") }
+      .help("Browse by section or notebook")
+  }
+  private var filterMenu: some View {
+    Menu {
+      Menu("Category") {
+        ForEach(LibraryBrowse.categories(library.recipes)) { category in
+          let token = SearchToken.category(id: category.id, name: category.name)
+          Button { toggleToken(token) } label: {
+            if tokens.contains(token) { Label("\(category.name) (\(category.count))", systemImage: "checkmark") }
+            else { Text("\(category.name) (\(category.count))") }
+          }
+        }
+      }
+      Menu("Tag") {
+        ForEach(allTags, id: \.self) { tag in
+          let token = SearchToken.tag(tag)
+          Button { toggleToken(token) } label: {
+            if tokens.contains(token) { Label("#" + tag, systemImage: "checkmark") } else { Text("#" + tag) }
+          }
+        }
+      }
+      if !tokens.isEmpty { Divider(); Button("Clear filters") { tokens = [] } }
+    } label: {
+      Label("Filter", systemImage: tokens.isEmpty ? "line.3.horizontal.decrease.circle" : "line.3.horizontal.decrease.circle.fill")
+    }
+    .help("Filter by category or tag")
+  }
+  private var columnsMenu: some View {
+    Menu {
+      Picker("Recipes across", selection: $gridColumns) {
+        Text("2 across").tag(2)
+        Text("3 across").tag(3)
+        Text("4 across").tag(4)
+      }
+    } label: { Label("Grid size", systemImage: "square.grid.2x2") }
+      .help("How many recipes across, and how big the images are")
+  }
+  private var syncButton: some View {
+    Button { showingSync = true } label: { Label("Sync", systemImage: "arrow.triangle.2.circlepath") }
+      .help("Sync with the Mac over your local network")
+  }
+  // Conditionals live inside the groups' view builders, not at the toolbar level,
+  // because conditional ToolbarContent needs iOS 16 (the iPad runs iPadOS 15).
+  @ToolbarContentBuilder private var libraryToolbar: some ToolbarContent {
+    ToolbarItemGroup(placement: .navigationBarLeading) {
+      if hSize != .regular { libraryMenu }
+    }
+    ToolbarItemGroup(placement: .navigationBarTrailing) {
+      filterMenu
+      if hSize == .regular { columnsMenu }
+      syncButton
+    }
+  }
+  // Always reserve two lines for the title (an invisible two-line placeholder
+  // sized to the current text), so one- and two-line cards are the same height
+  // and the images line up in a clean grid.
+  private func cardTitle(_ title: String) -> some View {
+    Text("M\nM")
+      .font(.subheadline.weight(.semibold)).lineLimit(2).hidden()
+      .frame(maxWidth: .infinity, alignment: .leading)
+      .overlay(alignment: .topLeading) {
+        Text(title).font(.subheadline.weight(.semibold)).lineLimit(2)
+          .multilineTextAlignment(.leading).foregroundStyle(.primary)
+      }
+  }
+  @ViewBuilder private var gridContent: some View {
+    ScrollView {
+      if results.isEmpty {
+        Text(library.recipes.isEmpty ? "No recipes yet. Sync from the Mac to add recipes." : "No matching recipes.")
+          .foregroundStyle(.secondary).multilineTextAlignment(.center).padding(.top, 48).padding(.horizontal, 24)
+      } else {
+        LazyVGrid(columns: gridItems, spacing: 14) {
+          ForEach(results) { recipe in
+            NavigationLink(destination: MobileRecipeView(recipeID: recipe.id)) {
+              VStack(alignment: .leading, spacing: 6) {
+                // A Color.clear box fixes the 4:3 ratio to the column width, so every
+                // card is the same height; the photo fills and is clipped to it.
+                Color.clear
+                  .aspectRatio(4.0 / 3.0, contentMode: .fit)
+                  .overlay(
+                    MobileRecipeImage(path: recipe.thumbnailPath ?? recipe.heroImagePath, thumbnail: true, fill: true, placeholderTitle: recipe.title, placeholderCollection: recipe.collection)
+                  )
+                  .clipShape(RoundedRectangle(cornerRadius: 12))
+                cardTitle(recipe.title)
+                HStack(spacing: 4) {
+                  Text(recipe.collection).font(.caption).foregroundStyle(.secondary).lineLimit(1)
+                  Spacer(minLength: 2)
+                  if recipe.favourite { Image(systemName: "heart.fill").font(.caption).foregroundStyle(.tint).accessibilityLabel("Favourite") }
+                }
+              }
+            }.buttonStyle(.plain)
+          }
+        }.padding(16)
+        Text("\(results.count) items · Stored on this device").font(.caption).foregroundStyle(.secondary).padding(.bottom, 20)
+      }
+    }
+    .navigationTitle(sectionName)
+    .task(id: query) {
+      do { try await Task.sleep(nanoseconds: 200_000_000) } catch { return }
+      if !Task.isCancelled { settledQuery = query }
+    }
+    .modifier(TokenSearchable(query: $query, tokens: $tokens, suggestions: searchSuggestions))
+    .toolbar { libraryToolbar }
+  }
+  var body: some View {
+    Group {
+      if hSize == .regular {
+        // iPad: a Mac-style sidebar beside the grid (classic split, works on iPadOS 15).
+        // .id(section) gives the detail a fresh identity per section so its scroll
+        // view is rebuilt at the top rather than keeping the previous offset.
+        NavigationView {
+          sidebar
+          gridContent.id(section)
+        }
+      } else {
+        // iPhone: the compact stack with the Library menu.
+        AdaptiveNavigation { gridContent.id(section) }
+      }
+    }
     .sheet(isPresented: $showingSync) { SyncView().environmentObject(library) }
-    .onChange(of: section) { _ in tokens = [] }
+    .onChange(of: section) { _ in
+      tokens = []
+      // On iPad, dismiss the sidebar after a selection so the grid gets full width.
+      if hSize == .regular { SidebarControl.collapse() }
+    }
     .alert("RecipeApp needs attention", isPresented: Binding(get: { library.error != nil }, set: { if !$0 { library.error = nil } })) {
       Button("OK") { library.error = nil }
     } message: { Text(library.error ?? "") }
@@ -268,18 +399,17 @@ struct SyncView: View {
   @EnvironmentObject var library: MobileLibrary
   @Environment(\.dismiss) private var dismiss
   @AppStorage("syncPairingCode") private var pairingCode = ""
-  @AppStorage("syncSchedule") private var schedule = "weekly"
   var body: some View {
     AdaptiveNavigation {
       Form {
         Section("Pairing code") {
           TextField("6-digit code shown on the Mac", text: $pairingCode)
             .keyboardType(.numberPad)
-          Text("On the Mac, choose File › Sync with iPhone to show the code.").font(.caption).foregroundStyle(.secondary)
+          Text("On the Mac, choose File › Sync with iPhone to show the code. Enter it once; it is remembered.").font(.caption).foregroundStyle(.secondary)
         }
-        Section("Macs on your network") {
+        Section("Sync now") {
           if library.discoveredMacs.isEmpty {
-            Text("Looking for your Mac… Make sure the Mac app is open and sharing on the same Wi-Fi.").foregroundStyle(.secondary)
+            Text("Looking for your Mac… Make sure the Mac app is open on the same Wi-Fi.").foregroundStyle(.secondary)
           }
           ForEach(library.discoveredMacs) { mac in
             Button {
@@ -292,15 +422,6 @@ struct SyncView: View {
               }
             }.disabled(library.syncing || pairingCode.isEmpty)
           }
-        }
-        Section("Automatic sync") {
-          Picker("Schedule", selection: $schedule) {
-            Text("Off").tag("off")
-            Text("Daily").tag("daily")
-            Text("Weekly").tag("weekly")
-          }
-          Text("The phone syncs when the Mac is open on the same Wi-Fi. It connects only during a sync.")
-            .font(.caption).foregroundStyle(.secondary)
         }
         Section {
           if let last = library.lastSyncAt {
@@ -315,14 +436,6 @@ struct SyncView: View {
       .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
       .onAppear { library.startBrowsing() }
       .onDisappear { library.stopBrowsing() }
-      .onChange(of: library.discoveredMacs) { macs in
-        // Best-effort automatic sync: while this screen is open, if a sync is due and exactly one
-        // paired Mac is found, sync it. Background/scheduled syncing is a later addition.
-        guard schedule != "off", !library.syncing, !pairingCode.isEmpty, macs.count == 1 else { return }
-        let interval: TimeInterval = schedule == "daily" ? 86_400 : 604_800
-        if let last = library.lastSyncAt, Date().timeIntervalSince(last) < interval { return }
-        library.sync(with: macs[0], pairingCode: pairingCode)
-      }
     }
   }
 }
@@ -378,12 +491,15 @@ struct MobileRecipeView: View {
             if let hero = RecipePresentation(recipe).hero { MobileRecipeImage(path: hero.assetPath).frame(maxHeight: 360) }
             Text(recipe.collection).foregroundStyle(.secondary)
             Text(recipe.warnings.isEmpty ? "Available offline" : "Text offline · Some attachments unavailable").font(.caption)
+            CookingModeToggle().id(recipeID)
             HStack(spacing: 12) {
               Button { library.favourite(recipe) } label: { Label(recipe.favourite ? "Favourite" : "Add favourite", systemImage: recipe.favourite ? "heart.fill" : "heart") }
                 .buttonStyle(.bordered)
+                .help(recipe.favourite ? "Remove from favourites" : "Add to favourites")
               if !recipe.isNote {
                 Button { cookNote = ""; addingCookNote = true } label: { Label("Cooked this", systemImage: "checkmark.circle") }
                   .buttonStyle(.borderedProminent)
+                  .help("Record that you cooked this, with an optional note")
               }
             }
             if !recipe.isNote {
@@ -394,7 +510,7 @@ struct MobileRecipeView: View {
                   Text("Viewed \(recipe.viewCount ?? 0) times · " + CookedPresentation.summary(recipe))
                   Image(systemName: "chevron.right").font(.caption2)
                 }.font(.caption)
-              }.foregroundStyle(.tint)
+              }.foregroundStyle(.tint).help("See and edit your cooked dates and notes")
             }
             ForEach(RecipePresentation(recipe).facts, id: \.self) { rich($0).font(.headline) }
             ForEach(RecipePresentation(recipe).originals) { block in
@@ -447,7 +563,7 @@ struct MobileRecipeView: View {
           }
         }
       } else { Text("Recipe unavailable") }
-    }.toolbar { ToolbarItem(placement: .navigationBarTrailing) { KeepScreenOnButton().id(recipeID) } }
+    }
       .onAppear { library.opened(recipeID, token: opening) }
   }
 }

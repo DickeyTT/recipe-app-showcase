@@ -1,0 +1,3857 @@
+[
+  {
+    "markdownSHA256": "0b1e8cb9f01d75b1c09740d313bf125fb0c774bcc39978e5c456c4fb6da8d23d",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "asian",
+        "curries-stews"
+      ],
+      "cuisine": "asian",
+      "mainIngredient": "lentil",
+      "ingredients": [
+        "lentil",
+        "coconut milk",
+        "coconut oil",
+        "green chilli",
+        "ginger",
+        "shallot",
+        "garlic",
+        "green curry paste",
+        "turmeric",
+        "curry powder",
+        "salt",
+        "black pepper",
+        "coconut aminos",
+        "coconut sugar",
+        "lemon"
+      ],
+      "tags": [
+        "#one-pot",
+        "#freezable",
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.7,
+      "notes": "Green curry paste gives Thai influence; coconut milk volume and cup measure disagree. Check the source quantity. Green curry paste ingredients unspecified; vegetarian status uncertain.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/1-Pot Lentil Dal.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "e3343a1976310c3995acbe2ccb4c8b1b35e02c131f7c26146897cc79ff89e796",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "vegetarian",
+        "rice-grains"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": "aubergine",
+      "ingredients": [
+        "aubergine",
+        "lemon",
+        "vegetable stock",
+        "ginger",
+        "garam masala",
+        "turmeric",
+        "cumin seed",
+        "mustard seed",
+        "onion",
+        "red pepper",
+        "tomato",
+        "basmati rice",
+        "coriander"
+      ],
+      "tags": [
+        "#vegan"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Vegan base; optional yoghurt serving alternative.\nValidation: Dropped main-dishes because a more specific dish type is present.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Aubergine and Pepper Biryani.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "09c94f3aa4283dac1efc9960038db6d0bdc0e693068cf7f1463fec926abf0899",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "vietnamese",
+        "vegetarian",
+        "lunches-light-meals"
+      ],
+      "cuisine": "vietnamese",
+      "mainIngredient": "tofu",
+      "ingredients": [
+        "tofu",
+        "daikon",
+        "carrot",
+        "vinegar",
+        "salt",
+        "sugar",
+        "five spice",
+        "olive oil",
+        "cucumber",
+        "coriander",
+        "jalapeño",
+        "mayonnaise",
+        "sriracha",
+        "baguette"
+      ],
+      "tags": [
+        "#street-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.77,
+      "notes": "Tofu is the first-listed filling; meat alternatives provided. Five-spice quantity has no unit.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Authentic Banh Mi Sandwich.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "f2bc79a6a50461cb99023ecd2e73702e3a6713d62af67f2489b723030a3d6576",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "meat",
+        "curries-stews"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": "beef",
+      "ingredients": [
+        "beef",
+        "beetroot",
+        "ginger",
+        "garlic",
+        "red chilli",
+        "coriander",
+        "cardamom",
+        "tomato purée",
+        "treacle",
+        "cumin",
+        "fennel seed",
+        "clove",
+        "sunflower oil",
+        "onion",
+        "beef stock",
+        "garam masala"
+      ],
+      "tags": [
+        "#freezable",
+        "#comfort-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.95,
+      "notes": "Slow oven-braised beef and beetroot curry.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Beef & Beetroot Curry.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "e20a6afb6ce805fcd85547fd54470ca9ecd5d4a8620379f126ee3d8505d1ee11",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "beef",
+      "ingredients": [
+        "beef",
+        "spring onion",
+        "onion",
+        "carrot",
+        "soy sauce",
+        "sugar",
+        "rice wine",
+        "garlic",
+        "sesame oil",
+        "sesame seed",
+        "pear",
+        "black pepper",
+        "potato starch noodle",
+        "enoki mushroom"
+      ],
+      "tags": [
+        "#stir-fry",
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Includes an optional Seoul-style noodle and broth variation; marinating time excludes quick tag.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Bulgogi (Korean BBQ Beef).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "ea7ef1177ece68cf6cf0a96b8abe967fc01a7a708fe4d37b23b3dc2b8f4addc8",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "asian",
+        "vegetarian",
+        "sides"
+      ],
+      "cuisine": "asian",
+      "mainIngredient": "cabbage",
+      "ingredients": [
+        "cabbage",
+        "avocado oil",
+        "leek",
+        "ginger",
+        "garlic",
+        "salt",
+        "sesame oil",
+        "soy sauce",
+        "mirin",
+        "rice vinegar",
+        "spring onion",
+        "coriander"
+      ],
+      "tags": [
+        "#stir-fry",
+        "#vegan"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.95,
+      "notes": "Vegetable base; optional proteins are not part of the base classification. Thirty minutes, not under thirty.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Cabbage Stir Fry.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "202513817398a79a9023580b405391d97e67dcd91cbb796aea06381b10360066",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "vegetarian",
+        "curries-stews"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": "chickpea",
+      "ingredients": [
+        "chickpea",
+        "vegetable oil",
+        "onion",
+        "garlic",
+        "ginger",
+        "green chilli",
+        "coriander",
+        "cumin",
+        "cayenne",
+        "turmeric",
+        "amchoor",
+        "paprika",
+        "garam masala",
+        "tomato",
+        "salt",
+        "lemon"
+      ],
+      "tags": [
+        "#one-pot",
+        "#vegan",
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Chickpea curry; amchoor may be replaced with extra lemon.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Chana Masala.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "a5ad52323ba73bd49b59fb629e51b784962e76c708348d513a57e68ae91cb067",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "thai",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "thai",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "coconut milk",
+        "curry powder",
+        "garlic",
+        "brown sugar",
+        "salt",
+        "soy sauce",
+        "peanut oil",
+        "lime",
+        "peanut",
+        "coriander",
+        "peanut butter",
+        "red curry paste",
+        "vinegar",
+        "fish sauce"
+      ],
+      "tags": [
+        "#bbq",
+        "#veggie-option",
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.95,
+      "notes": "Tofu alternative needs the fish sauce substitution described in the tips.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Chicken (or Tofu) Satay with Peanut Dipping Sauce.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "fefb00d44f618338602a77f420d8ed5d4ac98f306a233ef8c27cc0222ab0a081",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "meat",
+        "curries-stews"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "vegetable oil",
+        "green chilli",
+        "garlic",
+        "cumin",
+        "tomato",
+        "salt",
+        "turmeric",
+        "yoghurt",
+        "onion",
+        "green pepper",
+        "red pepper",
+        "garam masala",
+        "coriander"
+      ],
+      "tags": [
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.94,
+      "notes": "Chicken jalfrezi with separately stir-fried vegetables.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Chicken Jalfrezi.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "dfe6229e511986991d4bc2a2d2c2974ed80a20bc3be556e060027781013e4508",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "meat",
+        "curries-stews"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "lentil",
+        "vegetable oil",
+        "garlic",
+        "ginger",
+        "cumin",
+        "coriander",
+        "mustard seed",
+        "turmeric",
+        "chilli",
+        "chicken stock",
+        "tomato",
+        "pumpkin",
+        "coconut milk",
+        "spinach",
+        "onion"
+      ],
+      "tags": [
+        "#slow-cooker"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.75,
+      "notes": "Method uses onion but ingredient list gives no onion quantity. Seven-hour slow cooker recipe.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Chicken, Lentil & Pumpkin Curry.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "fdf609ba4068bdd01ed0babc3bb3c2c8f79ede18cbeaa9526982fff90bd0539d",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "vegetarian",
+        "sauces-dips-condiments"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": null,
+      "ingredients": [
+        "coriander",
+        "mint",
+        "yoghurt",
+        "lemon",
+        "jalapeño",
+        "ginger",
+        "garlic",
+        "salt",
+        "sugar"
+      ],
+      "tags": [
+        "#quick",
+        "#easy",
+        "#no-cook",
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Fresh blended chutney with yoghurt; vegan substitutions are optional.\nValidation: Cleared unsuitable main ingredient: coriander.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Cilantro Mint Chutney.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "361f1b737b4756dfe1355a1e2588b96e73c2bbe65687121b8743c8ac96e0f754",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "pasta-noodles"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "tofu",
+      "ingredients": [
+        "spaghetti",
+        "cooking oil",
+        "onion",
+        "kimchi",
+        "soy sauce",
+        "vegetarian oyster sauce",
+        "gochugaru",
+        "tofu",
+        "oat milk",
+        "smoked paprika",
+        "nutritional yeast",
+        "spring onion",
+        "salt",
+        "black pepper"
+      ],
+      "tags": [
+        "#quick",
+        "#weeknight",
+        "#fusion",
+        "#vegan"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Plant-based sauce User-confirmed homemade vegetarian kimchi is assumed.\nValidation: Dropped main-dishes because a more specific dish type is present.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Creamy Kimchi Pasta.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "0b686d30bd6742edc5ec29b2aa130b40bbcb54cff566690aa836ae2ccae31ce7",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "asian",
+        "vegetarian",
+        "main-dishes"
+      ],
+      "cuisine": "asian",
+      "mainIngredient": "tofu",
+      "ingredients": [
+        "tofu",
+        "avocado oil",
+        "garlic",
+        "chilli",
+        "soy sauce",
+        "agave syrup",
+        "black pepper",
+        "sesame seed"
+      ],
+      "tags": [
+        "#quick",
+        "#stir-fry",
+        "#vegan",
+        "#lunchbox",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Tofu base, with optional protein substitutions; no narrower cuisine inferred.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Crispy Chili Garlic Tofu.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "07df7b04fd5217720828f09a350d21984d9f1f440cc9d37de084eeb5470e4cd3",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "ginger",
+        "salt",
+        "black pepper",
+        "potato starch",
+        "peanut",
+        "garlic",
+        "dried chilli",
+        "soy sauce",
+        "rice syrup",
+        "vinegar",
+        "mustard",
+        "brown sugar",
+        "sesame seed",
+        "grapeseed oil"
+      ],
+      "tags": [
+        "#deep-fried",
+        "#party-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Double-fried wings with a sweet spicy glaze; optional peanuts and chilli.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Crispy Crunchy Korean Fried Chicken (Dakgangjeong).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "fcc8367ccbb4c03ad7e9d1beb06009ee15a8eba154a55297223eaec079fe9bde",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "cabbage",
+        "sweet potato",
+        "rice cake",
+        "perilla",
+        "spring onion",
+        "gochugaru",
+        "sugar",
+        "curry powder",
+        "soy sauce",
+        "rice wine",
+        "corn syrup",
+        "gochujang",
+        "garlic",
+        "ginger",
+        "sesame oil",
+        "rice",
+        "seaweed"
+      ],
+      "tags": [
+        "#stir-fry",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Includes optional fried rice using the remaining sauce.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Dak Galbi (Spicy Stir-Fried Chicken).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "bd21a367c9de4638db3516cd557f97e55129587cbd09e6712e346e5b7cfb1bf8",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "milk",
+        "soy sauce",
+        "black pepper",
+        "garlic",
+        "ginger",
+        "gochugaru",
+        "rice syrup",
+        "rice cake",
+        "cabbage",
+        "onion",
+        "carrot",
+        "green chilli",
+        "sweet potato",
+        "perilla",
+        "rice",
+        "kimchi"
+      ],
+      "tags": [
+        "#one-pot",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Covered pan cooking with vegetables and optional finishing fried rice.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Dakgalbi (Spicy Stir-Fried Chicken with Vegetables) - Maangchi.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "e425c993c09f69d50af1ac679b48f3ef43e0ba5a957631f1d2f6895c7911cb30",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "chinese",
+        "meat",
+        "soups",
+        "pasta-noodles"
+      ],
+      "cuisine": "chinese",
+      "mainIngredient": "lamb",
+      "ingredients": [
+        "lamb",
+        "vegetable oil",
+        "garlic",
+        "ginger",
+        "carrot",
+        "onion",
+        "wheat noodle",
+        "spring onion",
+        "vegetable stock",
+        "yellow bean sauce",
+        "chilli bean paste",
+        "peanut butter",
+        "sichuan pepper",
+        "sesame oil"
+      ],
+      "tags": [
+        "#quick",
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Lamb base; explicit vegan mince alternative.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Dan Dan Noodle Soup.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "9cef3443dd6169357df8f358e37f1289f06c5491dac8cf3c2f90cd6a7c266951",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "thai",
+        "meat",
+        "pasta-noodles"
+      ],
+      "cuisine": "thai",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "rice noodle",
+        "peanut oil",
+        "garlic",
+        "thai chilli",
+        "onion",
+        "red pepper",
+        "basil",
+        "oyster sauce",
+        "fish sauce",
+        "soy sauce",
+        "sugar",
+        "rice vinegar"
+      ],
+      "tags": [
+        "#stir-fry",
+        "#spicy",
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Chicken base; tofu version also requires vegetarian sauce choices.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Drunken Noodles (Pad Kee Mao).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "e74e911b95660cf46717c1ab708e6dc6b5a38c538b9c6a8109fffc09498725c4",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "lunches-light-meals",
+        "starters-snacks"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "cheese",
+      "ingredients": [
+        "kimchi",
+        "butter",
+        "gochujang",
+        "cheese",
+        "tortilla",
+        "sour cream",
+        "coriander",
+        "spring onion",
+        "perilla"
+      ],
+      "tags": [
+        "#quick",
+        "#easy",
+        "#fusion"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.9,
+      "notes": "Korean-Mexican fusion User-confirmed homemade vegetarian kimchi is assumed.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Easy Kimchi Quesadillas.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "4afabcbacea70ddedb751f7672aa9effa79e2066cb5c9a08d78df2d4d0d2e942",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "gochugaru",
+        "gochujang",
+        "soy sauce",
+        "vegetable oil",
+        "black pepper",
+        "rice syrup",
+        "garlic",
+        "ginger",
+        "mozzarella",
+        "rice cake",
+        "spring onion"
+      ],
+      "tags": [
+        "#spicy",
+        "#comfort-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Spicy chicken with optional cheese and rice cakes.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Fire Chicken with Cheese (Cheese Buldak).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "0f32c63c70451c959cf8a14b1a13d5329d2830c5c8dba741a43adb5579fbe18d",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "vegetarian",
+        "lunches-light-meals"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": "cauliflower",
+      "ingredients": [
+        "potato",
+        "ghee",
+        "curry powder",
+        "onion powder",
+        "cauliflower",
+        "chickpea",
+        "olive oil",
+        "salt",
+        "coriander",
+        "cumin",
+        "chilli",
+        "fennel seed",
+        "tortilla",
+        "spinach",
+        "mint chutney",
+        "pickled onion",
+        "turmeric",
+        "ginger",
+        "mustard",
+        "white pepper",
+        "cayenne"
+      ],
+      "tags": [
+        "#project",
+        "#make-ahead",
+        "#lunchbox"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Several components; chutney and pickles can be prepared ahead.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Frankies (aka Bombay Burritos).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "639e78216fcca385c091a0834370d8097ebb278c7e92f07dfb92cd01b074255f",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "sides"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "aubergine",
+      "ingredients": [
+        "aubergine",
+        "green chilli",
+        "cooking oil",
+        "gochujang",
+        "soy sauce",
+        "rice wine",
+        "garlic",
+        "sugar",
+        "sesame oil",
+        "sesame seed",
+        "black pepper"
+      ],
+      "tags": [
+        "#quick",
+        "#stir-fry",
+        "#vegan",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Quick aubergine side dish.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Gaji Bokkeum (Spicy Stir-fried Eggplants).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "e4cc9b90898e54d7f421a21390dc022cb44225a0068fa99cc48e3e34115a73dc",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "sides"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "aubergine",
+      "ingredients": [
+        "aubergine",
+        "spring onion",
+        "garlic",
+        "soy sauce",
+        "sesame oil",
+        "sugar",
+        "gochugaru",
+        "sesame seed",
+        "black pepper"
+      ],
+      "tags": [
+        "#quick",
+        "#easy",
+        "#vegan"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Steamed aubergine with seasoning.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Gaji Namul (Steamed Eggplant Side Dish).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "f4f97fe2badb85a77aa0ae17401dedf3e0f22466ad0129798a59af6b02713bd9",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "rice-grains"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": null,
+      "ingredients": [
+        "rice flour",
+        "salt",
+        "sesame oil"
+      ],
+      "tags": [
+        "#vegan",
+        "#freezable",
+        "#project"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Rice cakes made by microwave or steamer; no principal protein or vegetable.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Garaetteok (Cylinder-Shaped Rice Cakes for Tteokguk or Tteokbokki).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "7a4541fde5bc2a0a14f8e1bfa5395f908bfee87fe58a0d78e496b9a0abf3117e",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "sides"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "cabbage",
+      "ingredients": [
+        "kimchi",
+        "garlic",
+        "spring onion",
+        "brown sugar",
+        "sesame oil",
+        "sesame seed",
+        "rice bran oil"
+      ],
+      "tags": [
+        "#quick",
+        "#stir-fry",
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Cooked kimchi User-confirmed homemade vegetarian kimchi is assumed.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Garlic Sesame Kimchi.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "30dd6d2f89346e91c93fb4427ed2d956c193670ab67f1a67fc229e266a96a65b",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "sauces-dips-condiments"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": null,
+      "ingredients": [
+        "gochujang",
+        "soy sauce",
+        "sesame oil",
+        "rice vinegar",
+        "sugar",
+        "honey"
+      ],
+      "tags": [
+        "#quick",
+        "#easy",
+        "#no-cook",
+        "#freezable",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Whisked sauce, despite a cook-time field. Honey alternative means no unconditional vegan tag.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Gochujang Sauce.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "67f2e74c97f3bff2ea56862bdc87ea7db1096275bbd1b404b7f0c9428ac31c13",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "thai",
+        "curries-stews"
+      ],
+      "cuisine": "thai",
+      "mainIngredient": "potato",
+      "ingredients": [
+        "potato",
+        "chickpea",
+        "coconut oil",
+        "onion",
+        "garlic",
+        "ginger",
+        "jalapeño",
+        "green curry paste",
+        "lime",
+        "sugar",
+        "coconut milk",
+        "coriander",
+        "brown rice",
+        "coconut"
+      ],
+      "tags": [
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.7,
+      "notes": "Check green curry paste for shrimp before vegetarian use; method mentions olive oil instead of listed coconut oil.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Green Curry with Potatoes and Chickpeas.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "d13569731058d8ccf0c2585b4ba1a91db08e814efc0f1398444954576a859073",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "fish",
+        "curries-stews"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "clam",
+      "ingredients": [
+        "courgette",
+        "potato",
+        "spring onion",
+        "chilli",
+        "garlic",
+        "clam",
+        "gochujang",
+        "doenjang"
+      ],
+      "tags": [
+        "#quick",
+        "#spicy",
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.95,
+      "notes": "Clams listed first with pork alternative; explicit vegan variation.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Hobak Gochujang Jjigae (Korean Spicy Zucchini Stew).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "8a3ccc20e7fa63598c05528fa8b213c7da60973082858b211232bc5986feddff",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "vegetarian",
+        "sauces-dips-condiments"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": null,
+      "ingredients": [
+        "coriander",
+        "turmeric",
+        "cumin",
+        "fenugreek",
+        "ginger",
+        "mustard",
+        "fennel seed",
+        "cinnamon",
+        "cardamom",
+        "white pepper",
+        "nutmeg",
+        "clove",
+        "cayenne",
+        "salt"
+      ],
+      "tags": [
+        "#quick",
+        "#easy",
+        "#vegan",
+        "#store-cupboard"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Indian-style dry spice mix; no principal protein or vegetable.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Homemade Yellow Curry Powder.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "b7f50461e0744ae2b4dc657d3c0aa9698889af5bdd1f55f0780aeef23379a04a",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "rice-grains",
+        "starters-snacks"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": null,
+      "ingredients": [
+        "rice cake",
+        "anchovy",
+        "kelp",
+        "gochujang",
+        "gochugaru",
+        "sugar",
+        "spring onion",
+        "egg",
+        "fish cake"
+      ],
+      "tags": [
+        "#spicy",
+        "#street-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Anchovy stock is integral; optional eggs and fish cakes. Not vegetarian.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Hot and Spicy Rice Cake (Tteokbokki).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "aceb78c1475cf9a7547905c806d830d95d8d5916e66421d3bc3a982cf7b008a0",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "vegetarian",
+        "rice-grains",
+        "sides"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": null,
+      "ingredients": [
+        "rice",
+        "spring onion",
+        "red chilli",
+        "ghee",
+        "mustard seed",
+        "cardamom",
+        "clove",
+        "coriander",
+        "curry leaf",
+        "lemon",
+        "turmeric",
+        "sugar",
+        "salt"
+      ],
+      "tags": [
+        "#leftovers"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Baked seasoned rice using ghee; no principal protein or vegetable.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Indian Lemon Rice.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "478527fd120c63d8ea7f2e346c90ce7922a631547fae0e4a6d8b85db58faafd0",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "pasta-noodles"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "pork",
+      "ingredients": [
+        "noodle",
+        "chunjang",
+        "cooking oil",
+        "sugar",
+        "oyster sauce",
+        "chicken stock",
+        "potato starch",
+        "pork",
+        "ginger",
+        "rice wine",
+        "salt",
+        "black pepper",
+        "soy sauce",
+        "onion",
+        "cabbage",
+        "courgette",
+        "cucumber"
+      ],
+      "tags": [
+        "#stir-fry",
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Pork base with explicit vegan adaptation in tips.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Jajangmyeon (Noodles in Black Bean Sauce).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "0d8125b3eec2ba84a946888526bcf6a0db61551088e0d9cd26ba64f14ac4b997",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "rice-grains"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "pork",
+      "ingredients": [
+        "chunjang",
+        "cooking oil",
+        "cabbage",
+        "onion",
+        "pork",
+        "potato starch",
+        "sesame oil",
+        "rice",
+        "black pepper"
+      ],
+      "tags": [
+        "#batch-cook",
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.94,
+      "notes": "Pepper appears in method; black bean sauce over rice.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Jjajangbap (Black Bean Sauce over Rice).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "95df50500d7e92cd6cb9e517dc667ce64de993adcbab8d793d3553d6426980a8",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "pasta-noodles"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "beef",
+      "ingredients": [
+        "instant noodle",
+        "beef",
+        "salt",
+        "black pepper",
+        "vegetable oil",
+        "butter"
+      ],
+      "tags": [
+        "#quick",
+        "#easy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Title specifies steak, although it is optional in the ingredient list. Packaged noodles include seasoning.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Jjapaguri with Steak (Ram-don).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "76b95149d0fdb6eb5bfc3ed018b8812884664e2d919eb1d800bfec2b17ae43e8",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": "white fish",
+      "ingredients": [
+        "white fish",
+        "shallot",
+        "garlic",
+        "curry leaf",
+        "chilli powder",
+        "coriander",
+        "salt",
+        "black pepper",
+        "turmeric",
+        "curry powder",
+        "coconut oil",
+        "tamarind",
+        "lime"
+      ],
+      "tags": [
+        "#traybake",
+        "#bbq"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Baked fish with an explicit grilling alternative.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Kerala-Style Fish.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "bea1426a0b9bc2910034667902072075277542e35243c4e6fcf92a97c3acf20b",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "breakfast-brunch"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "beef",
+      "ingredients": [
+        "potato",
+        "cooking oil",
+        "leek",
+        "garlic",
+        "beef",
+        "kimchi",
+        "gochugaru",
+        "soy sauce",
+        "butter",
+        "egg",
+        "chive",
+        "salt",
+        "black pepper"
+      ],
+      "tags": [
+        "#comfort-food",
+        "#fusion"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Potato hash topped with eggs.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Kimchi Beef Hash.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "e26c58013aa286b722eff713b95f691264d98f08d22e1bca221369cc6db923a9",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "lunches-light-meals"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "beef",
+      "ingredients": [
+        "beef",
+        "kimchi",
+        "onion",
+        "cheese",
+        "bread",
+        "butter",
+        "lettuce",
+        "mayonnaise",
+        "gochujang"
+      ],
+      "tags": [
+        "#quick",
+        "#leftovers",
+        "#fusion"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Uses already-marinated or leftover bulgogi; quoted time excludes marinating.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Kimchi Bulgogi Cheesesteak.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "a41bf07b522d9901805375e114923a9978e9cf21234f08dc5b0bf91b8ee4d17b",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "rice-grains"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "cabbage",
+      "ingredients": [
+        "rice",
+        "kimchi",
+        "gochujang",
+        "sesame oil",
+        "vegetable oil",
+        "spring onion",
+        "sesame seed",
+        "seaweed"
+      ],
+      "tags": [
+        "#quick",
+        "#stir-fry",
+        "#leftovers"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "No added meat in the base but kimchi may contain fish. User-confirmed homemade vegetarian kimchi is assumed.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Kimchi Fried Rice (Kimchi-bokkeumbap).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "7a65fb9fdd06297ee85e9b3fdc54c948d77b6dc364135f07e452163d72c9b338",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "pasta-noodles"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": null,
+      "ingredients": [
+        "noodle",
+        "soy sauce",
+        "sesame oil",
+        "maple syrup",
+        "rice vinegar",
+        "gochujang",
+        "fish sauce",
+        "shallot",
+        "garlic",
+        "ginger",
+        "peanut oil",
+        "mushroom",
+        "red pepper",
+        "kimchi",
+        "salt",
+        "black pepper"
+      ],
+      "tags": [
+        "#stir-fry",
+        "#veggie-option",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.94,
+      "notes": "Protein is explicitly optional and unspecified; fish sauce has a miso alternative.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Kimchi Noodles.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "ba4c1de417b7d70bc8fc15c828bf60db0a03aa2a320e0ac9a48b1759e850d15b",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "starters-snacks"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "cabbage",
+      "ingredients": [
+        "kimchi",
+        "spring onion",
+        "sugar",
+        "plain flour",
+        "vegetable oil"
+      ],
+      "tags": [
+        "#quick",
+        "#easy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.77,
+      "notes": "Source queries water quantity (one-third or half a cup); review needed. User-confirmed vegetarian kimchi.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Kimchi Pancake (Kimchijeon).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "2f308c089b48399ca2fff3061a5f88df5d37ba3f2e8889efabb15888e185d14f",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "bread-baking",
+        "starters-snacks"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "pork",
+      "ingredients": [
+        "pork",
+        "kimchi",
+        "sugar",
+        "yeast",
+        "salt",
+        "vegetable oil",
+        "plain flour",
+        "egg",
+        "sweet potato noodle",
+        "soy sauce",
+        "sesame oil",
+        "black pepper",
+        "garlic",
+        "spring onion",
+        "onion",
+        "gochugaru"
+      ],
+      "tags": [
+        "#project",
+        "#freezable"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Yeasted filled buns with several rises; suitable for freezing per tips.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Kimchi Pork Buns (Kimchi-ppang).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "93f14646feeb3deb63a3674e99a4302c2c29a0c3d85ac5bdea956c78d160dabf",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "fish",
+        "curries-stews"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "tuna",
+      "ingredients": [
+        "tuna",
+        "kimchi",
+        "onion",
+        "spring onion",
+        "salt",
+        "gochugaru",
+        "sugar",
+        "sesame oil",
+        "tofu"
+      ],
+      "tags": [
+        "#one-pot",
+        "#spicy",
+        "#comfort-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Tuna and tofu stew with fermented kimchi.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Kimchi Stew with Tuna (Chamchi-kimchi-jjigae).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "0c8fbd218f1ae84145a613099fd8e5f1ce178749da2b05021dcc64c844db5e3c",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "pasta-noodles"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "bacon",
+      "ingredients": [
+        "udon noodle",
+        "bacon",
+        "kimchi",
+        "onion",
+        "spring onion",
+        "cooking oil",
+        "gochugaru",
+        "gochujang",
+        "soy sauce",
+        "honey",
+        "sugar",
+        "garlic",
+        "sesame oil",
+        "rice vinegar",
+        "egg",
+        "black pepper",
+        "sesame seed",
+        "seaweed"
+      ],
+      "tags": [
+        "#quick",
+        "#stir-fry",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Bacon version with optional tofu, tuna or beef substitutions.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Kimchi Udon Noodle Stir Fry.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "64f4fe4c1febacae1b5abdba88a6f7971fc304126f749d4bf3f08f82e3271561",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "soups",
+        "pasta-noodles"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "tofu",
+      "ingredients": [
+        "vegetable stock",
+        "kimchi",
+        "soy sauce",
+        "salt",
+        "udon noodle",
+        "fried tofu",
+        "spring onion"
+      ],
+      "tags": [
+        "#quick",
+        "#easy",
+        "#one-pot"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Vegetable broth, but kimchi ingredients are unspecified. User-confirmed homemade vegetarian kimchi is assumed.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Kimchi Udon Soup.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "5653d6ca22e2fd9c9187d65ab1b1a4e2248f3c62ecdfce576b0ac9e34e047c82",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "starters-snacks"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "beef",
+      "ingredients": [
+        "beef",
+        "ginger",
+        "garlic",
+        "soy sauce",
+        "sugar",
+        "sesame oil",
+        "black pepper",
+        "sweet potato noodle",
+        "onion",
+        "garlic chive",
+        "kimchi",
+        "tofu",
+        "salt",
+        "vegetable oil",
+        "plain flour",
+        "dumpling wrapper",
+        "vinegar",
+        "jalapeño"
+      ],
+      "tags": [
+        "#project",
+        "#batch-cook",
+        "#freezable"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Large dumplings with steaming and pan-frying methods; pork alternative.\nValidation: Dropped main-dishes because a more specific dish type is present.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/King-Size Kimchi Dumplings (Kimchi-wangmandu).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "3e5ef13efd4797880bb1eae5e4572fb6aef7f23a4a51f392045ebc554672472e",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "starters-snacks"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "beef",
+      "ingredients": [
+        "beef",
+        "soy sauce",
+        "garlic",
+        "sugar",
+        "honey",
+        "black pepper",
+        "liquid smoke",
+        "sesame seed",
+        "chilli flake"
+      ],
+      "tags": [
+        "#project",
+        "#make-ahead",
+        "#freezable"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Dehydrator jerky; catalogue records the recipe without validating preservation guidance.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Korean Beef Jerky (Yukpo).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "e2075dd1a366d4bc67e26dffd107e73ece86e6b9b6dc1f6530912161c38cbd62",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "beef",
+      "ingredients": [
+        "beef",
+        "onion",
+        "pear",
+        "garlic",
+        "ginger",
+        "mirin",
+        "soy sauce",
+        "gochujang",
+        "salt",
+        "carrot",
+        "daikon",
+        "sesame seed",
+        "spring onion"
+      ],
+      "tags": [
+        "#pressure-cooker",
+        "#make-ahead",
+        "#comfort-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Pressure-cooker and oven methods are both provided.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Korean Braised Short Ribs (Galbi Jjim).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "012b3a1f6bc1d3b5f18276940cff08b938855daa338e4b48110c712d7de73421",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "soy sauce",
+        "sugar",
+        "chicken stock powder",
+        "gochugaru",
+        "garlic powder",
+        "onion powder",
+        "chilli oil",
+        "buttermilk",
+        "fried chicken flour mix",
+        "plain flour",
+        "mayonnaise",
+        "vinegar",
+        "salt",
+        "cabbage",
+        "spring onion",
+        "bread",
+        "radish",
+        "sesame seed"
+      ],
+      "tags": [
+        "#deep-fried",
+        "#spicy",
+        "#fusion"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.95,
+      "notes": "Korean-Nashville fried chicken with slaw; marinating means not a quick recipe.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Korean Hot Chicken.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "7c2b19e55e8118422c8430adec5de933f3d1098cc350cf3e9d3b86f8c22051e0",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "gochujang",
+        "soy sauce",
+        "sake",
+        "garlic",
+        "ginger",
+        "sugar",
+        "brown sugar",
+        "sesame oil",
+        "sesame seed",
+        "spring onion",
+        "gochugaru",
+        "black pepper"
+      ],
+      "tags": [
+        "#traybake",
+        "#make-ahead",
+        "#freezable",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.95,
+      "notes": "Headline 29 minutes omits at least two hours marinating; no quick tag.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Korean Spicy Chicken with Gochujang (Oven Baked).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "e8812a44094560bd4a761f830c2fe846775fd42a38f1eb11246003776ef35370",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "sides"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "aubergine",
+      "ingredients": [
+        "aubergine",
+        "garlic",
+        "spring onion",
+        "soy sauce",
+        "agave syrup",
+        "sesame oil",
+        "gochugaru",
+        "sesame seed",
+        "black pepper"
+      ],
+      "tags": [
+        "#quick",
+        "#easy",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Steamed aubergine; honey is one optional sweetener.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Korean Spicy Garlic Eggplant (Gaji Muchim).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "f67b38e9088c0a8395410c68cb573057304dbe45c3b7c38f2a65093ada1e2987",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "gochujang",
+        "barbecue sauce",
+        "soy sauce",
+        "rice wine",
+        "sesame oil",
+        "honey",
+        "garlic",
+        "ginger",
+        "black pepper",
+        "lemon",
+        "olive oil",
+        "brown sugar"
+      ],
+      "tags": [
+        "#traybake",
+        "#bbq",
+        "#party-food",
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Two alternative marinades, with oven and grilling options.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Korean-Flavoured Baked Chicken Wings.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "7928ca46b2312a3bfeaddea628de7b25e72f7d0c8844a09223c4ef9bd576cecf",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "pork",
+      "ingredients": [
+        "tofu",
+        "pork",
+        "vegetable oil",
+        "garlic",
+        "ginger",
+        "salt",
+        "black pepper",
+        "gochugaru",
+        "onion",
+        "green chilli",
+        "spring onion",
+        "chicken stock",
+        "gochujang",
+        "soy sauce",
+        "potato starch",
+        "sesame oil"
+      ],
+      "tags": [
+        "#one-pot",
+        "#spicy",
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Tofu is the main ingredient but pork is integral; vegetarian option explicitly substitutes mushrooms and stock.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Korean-Style Mapo Tofu (Mapadubu).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "2d08eb4d557d4e6906537c2f65fe0d38d0b63a0607a75883dc2b9b0dcdf30ed7",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "middle-eastern",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "middle-eastern",
+      "mainIngredient": "lamb",
+      "ingredients": [
+        "aubergine",
+        "lamb",
+        "onion",
+        "garlic",
+        "salt",
+        "cumin",
+        "allspice",
+        "coriander",
+        "sumac",
+        "cinnamon",
+        "clove",
+        "cardamom",
+        "nutmeg",
+        "tomato",
+        "rice",
+        "dill",
+        "mint",
+        "pine nut",
+        "tomato purée",
+        "chicken stock"
+      ],
+      "tags": [
+        "#make-ahead",
+        "#veggie-option",
+        "#entertaining"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Lebanese stuffed aubergine with lamb first-listed; lentil alternative given.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Lebanese Stuffed Eggplant.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "213654980bac209c3adbf0b2c329011aed60f79f92d95ebd9feb4e5594366cdc",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "chinese",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "chinese",
+      "mainIngredient": "pork",
+      "ingredients": [
+        "tofu",
+        "pork",
+        "chilli bean paste",
+        "oyster sauce",
+        "soy sauce",
+        "shaoxing wine",
+        "black vinegar",
+        "sugar",
+        "cooking oil",
+        "chilli oil",
+        "garlic",
+        "ginger",
+        "red chilli",
+        "spring onion",
+        "sichuan pepper",
+        "chicken stock",
+        "cornflour"
+      ],
+      "tags": [
+        "#quick",
+        "#stir-fry",
+        "#low-fat",
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Low-fat claim retained from title; vegetarian adaptation explicitly replaces sauces and stock as well as meat.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Low-Fat Mapo Tofu.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "87aee0ae3e106a79093c3242abe57d677c24c06ee8e7974628e74d4d07f65cac",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "starters-snacks"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "pork",
+      "ingredients": [
+        "beef",
+        "pork",
+        "soy sauce",
+        "garlic",
+        "ginger",
+        "salt",
+        "black pepper",
+        "kimchi",
+        "bean sprout",
+        "sesame oil",
+        "tofu",
+        "garlic chive",
+        "plain flour",
+        "vegetable oil"
+      ],
+      "tags": [
+        "#project",
+        "#freezable",
+        "#make-ahead",
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Mixed pork and beef dumplings with tofu; pork selected as representative meat. Homemade wrappers and explicit vegan adaptation.\nValidation: Dropped main-dishes because a more specific dish type is present.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Mandu with Kimchi (Korean Dumplings).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "e45e08e74d8519f434a3a24b5d54ba12bc444e73f94201bb3c46d584c6edfc3c",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "vegetarian",
+        "curries-stews"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": "mung bean",
+      "ingredients": [
+        "mung bean",
+        "onion",
+        "sunflower oil",
+        "tomato",
+        "garlic",
+        "ginger",
+        "chilli",
+        "salt",
+        "sugar",
+        "turmeric",
+        "coriander",
+        "cumin",
+        "mustard seed",
+        "lemon",
+        "bicarbonate of soda"
+      ],
+      "tags": [
+        "#vegan",
+        "#comfort-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Bicarbonate appears in method as a pinch. Slow-simmered bean curry.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Mung Bean Curry.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "6013a1d7adc767bc78f9466cd63cb7533b9fd53c78eb5fb5a0a9df8cef0226b0",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "sides"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "aubergine",
+      "ingredients": [
+        "aubergine",
+        "vegetable oil",
+        "garlic",
+        "onion",
+        "spring onion",
+        "soy sauce",
+        "gochugaru",
+        "gochujang",
+        "sugar",
+        "black pepper",
+        "sesame oil",
+        "sesame seed"
+      ],
+      "tags": [
+        "#vegan",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.94,
+      "notes": "Seasoned stuffed aubergines cooked in a steamer; salt mentioned only in method.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/North Korean Style Spicy Stuffed Steamed Eggplant (Gochujang Gaji-jjim).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "5255fb63c11751c65af774986bdd7cbf334b4c1cc8f041984d9310ad8008ad09",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "salads",
+        "sides"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "cucumber",
+      "ingredients": [
+        "cucumber",
+        "onion",
+        "garlic",
+        "gochujang",
+        "gochugaru",
+        "salt",
+        "sugar",
+        "sesame oil",
+        "sesame seed"
+      ],
+      "tags": [
+        "#quick",
+        "#easy",
+        "#no-cook",
+        "#vegan",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Raw cucumber salad with spicy dressing.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Oi Muchim (Korean Cucumber Salad).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "b13cd8ea607721cbbecde129a65bfaa7e06ea356b23e3605cc6acc84023b8693",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "asian",
+        "vegetarian",
+        "soups",
+        "pasta-noodles"
+      ],
+      "cuisine": "asian",
+      "mainIngredient": "tofu",
+      "ingredients": [
+        "tofu",
+        "cornflour",
+        "salt",
+        "black pepper",
+        "gochujang",
+        "soy sauce",
+        "maple syrup",
+        "garlic",
+        "ginger",
+        "peanut butter",
+        "miso",
+        "vegetable stock",
+        "sesame oil",
+        "rice vinegar",
+        "noodle"
+      ],
+      "tags": [
+        "#fusion"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Korean-seasoned ramen fusion; egg and kimchi are optional toppings, so no blanket vegan tag.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Peanut Butter Ramen.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "0e702d29f99e1426346dbd8ac07032d4f4c754acf5bf5bb398d89eb9632635ef",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "asian",
+        "vegetarian",
+        "pasta-noodles",
+        "salads"
+      ],
+      "cuisine": "asian",
+      "mainIngredient": "tofu",
+      "ingredients": [
+        "peanut butter",
+        "soy sauce",
+        "ginger",
+        "garlic",
+        "rice vinegar",
+        "sesame oil",
+        "honey",
+        "chilli flake",
+        "soba noodle",
+        "spring onion",
+        "red pepper",
+        "yellow pepper",
+        "carrot",
+        "cucumber",
+        "tofu",
+        "sesame seed"
+      ],
+      "tags": [
+        "#make-ahead",
+        "#lunchbox"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Cold noodles and vegetables with peanut dressing; honey in sauce.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Peanut Sesame Noodles.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "675d6a031e71fd157c71392a53a5ebc92c9b52b11fa4c534c4dafd0879f87390",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "curries-stews"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "potato",
+        "onion",
+        "carrot",
+        "spring onion",
+        "gochugaru",
+        "sugar",
+        "gochujang",
+        "doenjang",
+        "rice wine",
+        "oyster sauce",
+        "garlic",
+        "ginger",
+        "black pepper",
+        "chicken stock",
+        "sesame oil",
+        "sesame seed",
+        "vegetable oil"
+      ],
+      "tags": [
+        "#pressure-cooker",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Pressure cooker chicken stew; timing does not include building and releasing pressure.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Pressure Cooker Dakbokkeumtang (Korean Spicy Chicken Stew).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "37205ecce8e4dff255e6edde95ed58eee0be581226e709dfb8df9c72bacbfad3",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "asian",
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": "asian",
+      "mainIngredient": "salmon",
+      "ingredients": [
+        "salmon",
+        "lemongrass",
+        "ginger",
+        "coriander",
+        "chilli jam",
+        "olive oil",
+        "salt",
+        "black pepper"
+      ],
+      "tags": [
+        "#quick",
+        "#easy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Salmon fishcakes; oil and seasonings specified in method.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Quick Asian Fishcakes.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "a5b93d8792b5984ec2100b417ef67e102f59d198b0fc0f639f494bee2604fabf",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "vegetarian",
+        "curries-stews"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": "lentil",
+      "ingredients": [
+        "lentil",
+        "kidney bean",
+        "avocado oil",
+        "onion",
+        "garlic",
+        "ginger",
+        "jalapeño",
+        "garam masala",
+        "cumin",
+        "coriander",
+        "salt",
+        "black pepper",
+        "tomato",
+        "bay leaf",
+        "lime",
+        "cream",
+        "coconut milk"
+      ],
+      "tags": [
+        "#one-pot",
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Quick relative to traditional dal, but stated total is sixty minutes. Optional dairy or coconut milk.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Quick Dal Makhani.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "8aaf15e4b58a54e73d118e1dd3c9b28aa98354723d9f5d06dbee6bc59ae80db4",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "rice-grains",
+        "starters-snacks"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": null,
+      "ingredients": [
+        "rice cake",
+        "gochugaru",
+        "soy sauce",
+        "sugar",
+        "sesame oil",
+        "garlic powder",
+        "black pepper",
+        "spring onion"
+      ],
+      "tags": [
+        "#quick",
+        "#vegan",
+        "#spicy",
+        "#street-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Quick with fresh rice cakes; frozen cakes need extra thawing time.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Rice Cakes in Chili Oil (Gireum Tteokbokki).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "93cac4510e5f359189bee723bed6401d7a34b4b181fae65cc442ae2270813b12",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "rice-grains",
+        "sides"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "adzuki bean",
+      "ingredients": [
+        "adzuki bean",
+        "rice",
+        "salt"
+      ],
+      "tags": [
+        "#vegan"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Beans require extended boiling and rice soaking; no quick tag.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Rice with Red Beans (Patbap).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "cf6f834848aa36097fab68d0b9c1c91c67dd1aa5d8a6dea6b42c0d0a33730702",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "rice-grains",
+        "pasta-noodles"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "tofu",
+      "ingredients": [
+        "sweet potato noodle",
+        "cooking oil",
+        "onion",
+        "garlic",
+        "salt",
+        "black pepper",
+        "gochujang",
+        "soy sauce",
+        "gochugaru",
+        "oat milk",
+        "mushroom seasoning",
+        "agave syrup",
+        "nutritional yeast",
+        "rice cake",
+        "fried tofu",
+        "spring onion"
+      ],
+      "tags": [
+        "#vegan",
+        "#spicy",
+        "#comfort-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Plant-based rosé sauce and fried tofu in place of fish cake.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Rosé Tteokbokki.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "61abd9d96f3db8929311dcc040f76258082da1d97aea55232dcceff344977446",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "curries-stews"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "beef",
+      "ingredients": [
+        "beef",
+        "kimchi",
+        "garlic",
+        "black pepper",
+        "rice wine",
+        "sesame oil",
+        "soy sauce",
+        "gochugaru",
+        "gochujang"
+      ],
+      "tags": [
+        "#slow-cooker",
+        "#comfort-food",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Eight-hour slow cooker stew.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Slow Cooker Kimchi Stew with Beef.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "c3efd5af6e248e170c3f55936fa7a06d084c6ad7ec55a9691da2d83d99d2fbf6",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "tofu",
+      "ingredients": [
+        "tofu",
+        "cooking oil",
+        "sesame oil",
+        "sesame seed",
+        "garlic",
+        "onion",
+        "spring onion",
+        "soy sauce",
+        "salt",
+        "sugar",
+        "gochugaru"
+      ],
+      "tags": [
+        "#vegan",
+        "#spicy",
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Pan-fried then braised tofu; served hot or cold.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Spicy Braised Tofu (Dubu-jorim).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "90e0b8a1f0328358f1c325408cbc738317b741d84da65c656a61d159f4d2759e",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "cod",
+      "ingredients": [
+        "cod",
+        "salt",
+        "black pepper",
+        "potato starch",
+        "onion",
+        "garlic",
+        "soy sauce",
+        "gochugaru",
+        "kelp",
+        "spring onion",
+        "green chilli"
+      ],
+      "tags": [
+        "#one-pot",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Includes thirty minutes resting; original personal assessment retained in Tips.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Spicy Cod Fillets (Daegusal-jorim).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "98b319894a38eaf3963db7aa53bbf8f9b0dde2a84e4fad2c0d5b9378e9027a61",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "meat",
+        "main-dishes"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "ginger",
+        "soy sauce",
+        "black pepper",
+        "potato starch",
+        "egg",
+        "vegetable oil",
+        "leek",
+        "garlic",
+        "chilli flake",
+        "green chilli",
+        "red chilli",
+        "spring onion",
+        "onion",
+        "dried chilli",
+        "rice syrup",
+        "vinegar",
+        "sesame oil"
+      ],
+      "tags": [
+        "#deep-fried",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Double-fried chicken in garlic and leek oil with sweet-sour sauce.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Spicy Garlic Fried Chicken (Kkanpunggi).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "60856fc006807db4ed5d04897a0275b693e6da9b3dd41faa3431d98e2e5f30cc",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "japanese",
+        "fish",
+        "soups",
+        "pasta-noodles"
+      ],
+      "cuisine": "japanese",
+      "mainIngredient": "salmon",
+      "ingredients": [
+        "salmon",
+        "shiitake mushroom",
+        "soy sauce",
+        "sugar",
+        "sesame oil",
+        "chilli garlic paste",
+        "chicken stock",
+        "miso",
+        "dashi",
+        "pak choi",
+        "spring onion",
+        "ramen noodle"
+      ],
+      "tags": [
+        "#spicy",
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Salmon ramen; tofu adaptation must also omit fish dashi and use vegetable stock.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Spicy Miso Ramen with Chili Roasted Salmon and Bok Choy.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "ddb0c7d483c4b849933a6edf18d7afb87ec679068ea583a83da1771744533902",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "fish",
+        "curries-stews"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "tuna",
+      "ingredients": [
+        "tuna",
+        "onion",
+        "green chilli",
+        "gochujang",
+        "gochugaru",
+        "soy sauce",
+        "garlic",
+        "spring onion",
+        "lettuce"
+      ],
+      "tags": [
+        "#quick",
+        "#one-pot",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Short-simmered tuna stew served in lettuce wraps.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Spicy Tuna Stew (Chamchi-jjigae).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "f156608e9f20043d1a2cbb8b12f86321c4df799f9fdfbb3f83408c759493e8fa",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "asian",
+        "vegetarian",
+        "curries-stews"
+      ],
+      "cuisine": "asian",
+      "mainIngredient": "aubergine",
+      "ingredients": [
+        "aubergine",
+        "salt",
+        "olive oil",
+        "onion",
+        "chilli",
+        "garlic",
+        "ginger",
+        "curry leaf",
+        "turmeric",
+        "coconut milk",
+        "curry powder",
+        "coriander"
+      ],
+      "tags": [
+        "#quick",
+        "#vegan",
+        "#one-pot"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Sri Lankan cuisine uses the permitted broad Asian category.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Sri Lankan Aubergine Curry.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "60e8c8ce3c481ef2ce9df930aa5a18192ef56cf58124247e2cfc70856541d80b",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "asian",
+        "vegetarian",
+        "rice-grains"
+      ],
+      "cuisine": "asian",
+      "mainIngredient": "tofu",
+      "ingredients": [
+        "tofu",
+        "avocado oil",
+        "salt",
+        "black pepper",
+        "soy sauce",
+        "maple syrup",
+        "sriracha",
+        "garlic",
+        "vegan mayonnaise",
+        "rice vinegar",
+        "ginger",
+        "rice",
+        "edamame",
+        "cucumber",
+        "avocado",
+        "crispy onion",
+        "coriander",
+        "spring onion"
+      ],
+      "tags": [
+        "#vegan",
+        "#lunchbox",
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Tofu rice bowl with two sauces; components stored separately for lunches.\nValidation: Dropped main-dishes because a more specific dish type is present.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Sticky Glazed Tofu Bowl with Yum Yum Sauce.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "ac9249b2097df85acd46ba183a489513cc370c28edc6ce99318789bb56d56c4c",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "sauces-dips-condiments"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": null,
+      "ingredients": [
+        "tofu",
+        "cornflour",
+        "salt",
+        "black pepper",
+        "gochujang",
+        "soy sauce",
+        "maple syrup",
+        "cooking oil",
+        "sesame oil",
+        "rice vinegar",
+        "fish sauce",
+        "kimchi"
+      ],
+      "tags": [
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Combined crispy tofu and kimchi sauce instructions; fish sauce and kimchi prevent an unconditional vegetarian label.\nValidation: Dropped main-dishes because a more specific dish type is present; Cleared unsuitable main ingredient: tofu.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Stir-Fry Tofu and Sauce.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "3343514001adb617bf03f2127300588ddfbd903543afd2a57b0e4840930e5e62",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "curries-stews"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "tofu",
+      "ingredients": [
+        "tofu",
+        "broccoli",
+        "rapeseed oil",
+        "onion",
+        "garlic",
+        "ginger",
+        "kimchi",
+        "gochujang",
+        "rice syrup",
+        "oyster mushroom",
+        "vegetable stock",
+        "salt",
+        "spring onion"
+      ],
+      "tags": [
+        "#one-pot",
+        "#comfort-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Vegetable-stock stew User-confirmed homemade vegetarian kimchi is assumed.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Tenderstem Broccoli, Tofu and Kimchi Stew - Meera Sodha.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "bcc4937a0ddd95ced8f321fa25b2c96ac88b8c274a1dc43f3c8f5b67eb33755e",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "thai",
+        "vegetarian",
+        "curries-stews"
+      ],
+      "cuisine": "thai",
+      "mainIngredient": "pepper",
+      "ingredients": [
+        "brown rice",
+        "coconut oil",
+        "onion",
+        "salt",
+        "ginger",
+        "garlic",
+        "pepper",
+        "carrot",
+        "red curry paste",
+        "coconut milk",
+        "kale",
+        "coconut sugar",
+        "tamari",
+        "rice vinegar",
+        "basil",
+        "coriander"
+      ],
+      "tags": [
+        "#vegan"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Tips explicitly specify vegetarian curry paste. Rice takes forty minutes including resting.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Thai Red Curry with Vegetables.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "3ba0622b765d4d143dadecbb7524cef83c50a73e8a67575c8fea3089a03f3d43",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "thai",
+        "meat",
+        "curries-stews"
+      ],
+      "cuisine": "thai",
+      "mainIngredient": "chicken",
+      "ingredients": [
+        "chicken",
+        "courgette",
+        "onion",
+        "pepper",
+        "cherry tomato",
+        "red curry paste",
+        "coconut milk",
+        "chicken stock",
+        "brown sugar",
+        "fish sauce",
+        "lime leaf",
+        "thai basil"
+      ],
+      "tags": [
+        "#one-pot",
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.77,
+      "notes": "Source questions water quantity and method splits coconut milk without stating the split; review before cooking.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Thai Zucchini Curry.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "9989ace417761592af82395102494f525ce0dc2e3cf20fe34b08b95c27128e56",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "chinese",
+        "vegetarian",
+        "sauces-dips-condiments"
+      ],
+      "cuisine": "chinese",
+      "mainIngredient": null,
+      "ingredients": [
+        "sichuan pepper",
+        "avocado oil",
+        "shallot",
+        "soy sauce",
+        "chilli bean paste",
+        "chilli flake",
+        "sugar",
+        "salt",
+        "five spice",
+        "monosodium glutamate"
+      ],
+      "tags": [
+        "#vegan",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.96,
+      "notes": "Chilli oil condiment; no principal protein or vegetable. Storage advice is source text, not independently validated.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/The Best Chili Oil.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "b7ada8a9fb249c95458381243f3a700c9cab10ecda6c5af272c88b2c607fc47c",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "rice-grains",
+        "starters-snacks"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": null,
+      "ingredients": [
+        "rice cake",
+        "fish cake",
+        "cabbage",
+        "spring onion",
+        "anchovy stock",
+        "gochujang",
+        "gochugaru",
+        "soy sauce",
+        "sugar",
+        "corn syrup",
+        "garlic"
+      ],
+      "tags": [
+        "#spicy",
+        "#street-food",
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Fish cake and anchovy broth base with an explicit vegan alternative.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Tteokbokki (Spicy Stir-fried Rice Cakes).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "bd2255806df6f175c29aad3622f0be561d0f9a696072d334c8bf5383009573ce",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "fish",
+        "pasta-noodles"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "tuna",
+      "ingredients": [
+        "tuna",
+        "salt",
+        "egg noodle",
+        "olive oil",
+        "cannellini bean",
+        "kimchi",
+        "kale",
+        "gochujang",
+        "butter"
+      ],
+      "tags": [
+        "#quick",
+        "#weeknight",
+        "#fusion"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Tuna and beans with egg noodles and kimchi.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Tuna & Noodles with Kimchi.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "e1165b878b3b26c97d2547dc8634fdef130617bd673fe115b0abfb2dbeb77881",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "fish",
+        "curries-stews"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "tuna",
+      "ingredients": [
+        "tuna",
+        "cooking oil",
+        "kimchi",
+        "onion",
+        "tofu",
+        "spring onion",
+        "stock",
+        "fish sauce"
+      ],
+      "tags": [
+        "#one-pot",
+        "#comfort-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Stock is flexible; no single stock type assumed.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Tuna Kimchi Jjigae (Stew).md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "8707c125b1281764b02fa53ef0a527b096112a3483dd7c6e2c1bc805da70f02d",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "korean",
+        "vegetarian",
+        "pasta-noodles"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": "mushroom",
+      "ingredients": [
+        "wheat noodle",
+        "cooking oil",
+        "garlic",
+        "ginger",
+        "spring onion",
+        "onion",
+        "cabbage",
+        "courgette",
+        "shiitake mushroom",
+        "soy sauce",
+        "chunjang",
+        "vegetarian oyster sauce",
+        "sugar",
+        "cucumber",
+        "gochugaru"
+      ],
+      "tags": [
+        "#vegan",
+        "#stir-fry"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Explicitly vegan dry black-bean noodle sauce.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Vegan Gan Jjajangmyeon.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "55435da67e13f8effc79817a8251ad73e58a0c49631fbdcdab87e0d82a827ebf",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "indian",
+        "vegetarian",
+        "curries-stews"
+      ],
+      "cuisine": "indian",
+      "mainIngredient": "lentil",
+      "ingredients": [
+        "lentil",
+        "fennel seed",
+        "quinoa",
+        "salt",
+        "garlic powder",
+        "coriander",
+        "tofu",
+        "olive oil",
+        "garlic",
+        "ginger",
+        "turmeric",
+        "tomato",
+        "fenugreek leaf",
+        "coconut milk",
+        "lime",
+        "brown sugar",
+        "cayenne",
+        "black pepper"
+      ],
+      "tags": [
+        "#vegan",
+        "#project"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Baked lentil balls bound with tofu and served in coconut curry sauce.\nValidation: Dropped main-dishes because a more specific dish type is present.",
+      "schemaVersion": 1,
+      "sourceFile": "Asian Cooking/Vegan Lentil Meatballs with Indian Coconut Curry Sauce.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "86e585236e4b54ddccb477177c5d33a9b4f33341218065fcee16593738ddecb6",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "asian",
+        "fish",
+        "salads",
+        "pasta-noodles"
+      ],
+      "cuisine": "asian",
+      "mainIngredient": "salmon",
+      "ingredients": [
+        "soba noodle",
+        "cucumber",
+        "pak choi",
+        "pepper",
+        "mangetout",
+        "spring onion",
+        "dill",
+        "coriander",
+        "mint",
+        "salmon",
+        "sesame oil",
+        "soy sauce",
+        "rice vinegar",
+        "mirin",
+        "sugar",
+        "sesame seed",
+        "seaweed",
+        "chilli flake"
+      ],
+      "tags": [
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.65,
+      "notes": "Clip explicitly has no quantities. Title selects smoked salmon; tofu and chicken alternatives are given.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Asian Soba Noodle Salad with Smoked Salmon.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "052be1a3b015bfe4e803f5c31303534649d0c869567e8ce5da11cca0d6a6d6f8",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "asian",
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": "asian",
+      "mainIngredient": "salmon",
+      "ingredients": [
+        "salmon",
+        "broccoli",
+        "olive oil",
+        "soy sauce",
+        "hoisin sauce",
+        "honey",
+        "sesame oil",
+        "orange",
+        "coriander",
+        "mint",
+        "garlic",
+        "ginger",
+        "chilli flake",
+        "spring onion",
+        "salt",
+        "black pepper"
+      ],
+      "tags": [
+        "#traybake"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Thirty-minute marinade is additional to preparation and cooking.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Asian-Glazed Sheet-Pan Salmon and Broccoli.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "3b844c5e5381e9d86bc8083d401bd95a1e2d481385992ca31f8963e8ad893e10",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "spanish-portuguese",
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": "spanish-portuguese",
+      "mainIngredient": "cod",
+      "ingredients": [
+        "cod",
+        "pickled pepper",
+        "chilli flake",
+        "garlic",
+        "lemon",
+        "red wine vinegar",
+        "olive oil",
+        "smoked paprika",
+        "salt"
+      ],
+      "tags": [
+        "#traybake",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.7,
+      "notes": "Method refers to potatoes whose preparation and ingredient entry are absent from the clip.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Baked Piri-Piri Cod.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "97a412ac168b9a181c72b69a4f954180da0afcb679d50ce2e68d69ecba981a46",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": null,
+      "mainIngredient": "salmon",
+      "ingredients": [
+        "salmon",
+        "caraway seed",
+        "butter",
+        "caper",
+        "lemon",
+        "beetroot",
+        "dill"
+      ],
+      "tags": [
+        "#traybake",
+        "#gluten-free"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Beetroot scales over salmon; no cuisine inferred from ingredient origin.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Beetroot Roasted Salmon.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "89a522960a4312149cb8f25d11fde9a04403c3abfdcece57a33592449136e577",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "asian",
+        "fish",
+        "curries-stews"
+      ],
+      "cuisine": "asian",
+      "mainIngredient": "cod",
+      "ingredients": [
+        "cod",
+        "vegetable oil",
+        "garlic",
+        "onion",
+        "green chilli",
+        "tomato purée",
+        "turmeric",
+        "chilli powder",
+        "curry powder",
+        "clementine",
+        "coriander",
+        "salt",
+        "spinach"
+      ],
+      "tags": [],
+      "likelyDuplicateOf": null,
+      "confidence": 0.94,
+      "notes": "Clementine peel curry; broad Asian category without guessing a country.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Clementine and Cod Curry.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "23338851260ec3b5736d1bc3390d874e5670d3c43a3cc7ead85d3352b62f43d2",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "asian",
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": "asian",
+      "mainIngredient": "salmon",
+      "ingredients": [
+        "salmon",
+        "cooking oil",
+        "salt",
+        "black pepper",
+        "soy sauce",
+        "sambal",
+        "sugar",
+        "garlic",
+        "cauliflower",
+        "sesame oil",
+        "sesame seed",
+        "spring onion",
+        "coriander"
+      ],
+      "tags": [
+        "#quick",
+        "#one-pot",
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Same skillet used for cauliflower rice and glazed salmon.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Firecracker Salmon and Cauliflower Rice.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "d462a759067570ecb967587361f5f1729486f73c32829ebaa13d0ffebeb500af",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "greek",
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": "greek",
+      "mainIngredient": "salmon",
+      "ingredients": [
+        "salmon",
+        "olive oil",
+        "salt",
+        "black pepper",
+        "lemon",
+        "tzatziki",
+        "quinoa",
+        "rocket",
+        "tomato",
+        "aubergine",
+        "pepper",
+        "courgette",
+        "cucumber",
+        "dill"
+      ],
+      "tags": [
+        "#bbq",
+        "#veggie-option"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.95,
+      "notes": "Greek-inspired salmon bowl; vegetables and grain are flexible optional additions.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Grilled Salmon Tzatziki Bowls.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "dbaa535a7fd527311b728208739236f3e57b04cc351a923c4bdd3d9f6d154d94",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "british",
+        "fish",
+        "rice-grains"
+      ],
+      "cuisine": "british",
+      "mainIngredient": "haddock",
+      "ingredients": [
+        "olive oil",
+        "onion",
+        "garlic",
+        "ginger",
+        "curry powder",
+        "rice",
+        "haddock",
+        "pea",
+        "egg",
+        "parsley",
+        "coriander"
+      ],
+      "tags": [
+        "#spicy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Anglo-Indian kedgeree; thirty-five minutes, so no quick tag.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Quick and Spicy Kedgeree.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "fcdeb3cf61c6de6483b449c23eb0473a5dc11b133cbf74b528c2a1f4d6ce001d",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": null,
+      "mainIngredient": "sea bream",
+      "ingredients": [
+        "sea bream",
+        "parsley",
+        "tomato",
+        "artichoke",
+        "caper berry",
+        "olive oil",
+        "salt",
+        "black pepper"
+      ],
+      "tags": [
+        "#traybake",
+        "#easy"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Whole roast fish; no particular country asserted in text.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Roast Sea Bream, Tomatoes and Artichokes.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "4a7c44e3948d48603c5d5f0bf59e0370ca118ed6617dabe6f8bca695c6dbe4fb",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": null,
+      "mainIngredient": "salmon",
+      "ingredients": [
+        "salmon",
+        "cherry tomato",
+        "garlic",
+        "olive oil",
+        "balsamic vinegar",
+        "thyme",
+        "salt",
+        "black pepper",
+        "couscous"
+      ],
+      "tags": [
+        "#one-pot",
+        "#weeknight"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Skillet salmon with blended tomato sauce; cuisine unspecified.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Saucy Skillet Salmon.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "4c287639944f8dbc153694cc646c3bc5592a0796cb7fb7f7573145541cc611c2",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "french",
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": "french",
+      "mainIngredient": "salmon",
+      "ingredients": [
+        "salmon",
+        "olive oil",
+        "salt",
+        "shallot",
+        "white wine vinegar",
+        "parsley",
+        "chervil",
+        "chive",
+        "basil",
+        "tarragon",
+        "black pepper"
+      ],
+      "tags": [
+        "#make-ahead",
+        "#entertaining"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Low-temperature roasting with French herb salsa; not a slow-cooker recipe.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Slow-Roasted Salmon with French Herb Salsa.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "142aa793f8ab67d5ae33fff1d0b670e768899d45acf2d18b241bd60923a43ef3",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "japanese",
+        "fish",
+        "rice-grains"
+      ],
+      "cuisine": "japanese",
+      "mainIngredient": "salmon",
+      "ingredients": [
+        "salmon",
+        "teriyaki sauce",
+        "sweet chilli sauce",
+        "rice",
+        "pak choi",
+        "sesame seed",
+        "spring onion",
+        "coriander",
+        "lime"
+      ],
+      "tags": [
+        "#bbq",
+        "#weeknight"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.95,
+      "notes": "Teriyaki-inspired salmon under the grill, with steamed greens and rice.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Sticky Teriyaki Salmon Rice.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "760e06dcaa5ee70744d96901177969a36a685e96ac2920ebaba6fb4bf4a818b2",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": null,
+      "mainIngredient": "salmon",
+      "ingredients": [
+        "salmon",
+        "asparagus",
+        "lemon",
+        "olive oil",
+        "white wine",
+        "sun-dried tomato",
+        "basil",
+        "garlic",
+        "salt",
+        "black pepper"
+      ],
+      "tags": [
+        "#quick",
+        "#traybake",
+        "#weeknight"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Twenty-five-minute oven meal; no country inferred.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Sun Dried Tomato Lemon Baked Salmon and Asparagus.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "469381e849e8afa309b05634612eab053464cddda71e2496451ccd0b16dad2fa",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "british",
+        "fish",
+        "main-dishes"
+      ],
+      "cuisine": "british",
+      "mainIngredient": "fish",
+      "ingredients": [
+        "potato",
+        "pea",
+        "lemon",
+        "butter",
+        "carrot",
+        "onion",
+        "olive oil",
+        "milk",
+        "salmon",
+        "white fish",
+        "plain flour",
+        "spinach",
+        "prawn",
+        "mustard",
+        "cheddar",
+        "salt",
+        "black pepper"
+      ],
+      "tags": [
+        "#comfort-food",
+        "#batch-cook"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.98,
+      "notes": "Mixed fish pie with pea mash; original PDF retained as reference.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Sweet Pea Fish Pie.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "a6f13b2294f65bf8eb1d35945aa70b11b2149aad1548a7b090671655deafb386",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "thai",
+        "fish",
+        "rice-grains"
+      ],
+      "cuisine": "thai",
+      "mainIngredient": "hake",
+      "ingredients": [
+        "leek",
+        "hake",
+        "thai green herb paste",
+        "lime",
+        "red chilli",
+        "vegetable oil",
+        "soy sauce",
+        "fish sauce",
+        "rice"
+      ],
+      "tags": [],
+      "likelyDuplicateOf": null,
+      "confidence": 0.74,
+      "notes": "Leek and chilli quantities read one slice/s small; branded fish and herb portion sizes unspecified. Check original quantities.\nValidation: Dropped main-dishes because a more specific dish type is present.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Thai-Style Green Hake with Lime and Chilli Rice.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "918141c06e6e0fc6bd01c8c7cc39af1c3a2062c6b8d776c60886b2704ffe36d4",
+    "catalogue": {
+      "isRecipe": true,
+      "categories": [
+        "british",
+        "fish",
+        "pasta-noodles"
+      ],
+      "cuisine": "british",
+      "mainIngredient": "haddock",
+      "ingredients": [
+        "macaroni",
+        "olive oil",
+        "onion",
+        "milk",
+        "haddock",
+        "truffle oil",
+        "butter",
+        "plain flour",
+        "gruyère",
+        "breadcrumb",
+        "parsley",
+        "thyme",
+        "tarragon",
+        "garlic",
+        "black pepper"
+      ],
+      "tags": [
+        "#make-ahead",
+        "#comfort-food"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.97,
+      "notes": "Smoked haddock macaroni bake with herb breadcrumbs.\nValidation: Dropped main-dishes because a more specific dish type is present.",
+      "schemaVersion": 1,
+      "sourceFile": "Fish Recipes/Truffled Macaroni & Smoked Haddock Bake.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "6e3ab79fa014cef936d1150e6494e144567dd222cb355e1d52fa97a606188c9e",
+    "catalogue": {
+      "isRecipe": false,
+      "categories": [
+        "korean",
+        "notes-logs"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": null,
+      "ingredients": [],
+      "tags": [],
+      "likelyDuplicateOf": null,
+      "confidence": 0.99,
+      "notes": "Reference guide to gochujang and dish ideas, not a complete individual recipe. No ingredient list inferred from prose.",
+      "schemaVersion": 1,
+      "sourceFile": "Notes/15 Recipes That Use Gochujang.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "5e4927fe1a942e6dc86daf7ce00d70ffc2dafc784ae976a557657ba6f439ea6b",
+    "catalogue": {
+      "isRecipe": false,
+      "categories": [
+        "korean",
+        "notes-logs"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": null,
+      "ingredients": [],
+      "tags": [],
+      "likelyDuplicateOf": null,
+      "confidence": 0.99,
+      "notes": "Menu idea list, not a recipe. Retained intact as a note.",
+      "schemaVersion": 1,
+      "sourceFile": "Notes/Korean Meal Idea.md",
+      "duplicateStatus": null
+    }
+  },
+  {
+    "markdownSHA256": "eac6b89a8c9049c6d24e5e3edc47bf5f5758efe9444fb3a2d78088523a2afeb9",
+    "catalogue": {
+      "isRecipe": false,
+      "categories": [
+        "korean",
+        "notes-logs"
+      ],
+      "cuisine": "korean",
+      "mainIngredient": null,
+      "ingredients": [],
+      "tags": [
+        "#entertaining",
+        "#make-ahead"
+      ],
+      "likelyDuplicateOf": null,
+      "confidence": 0.99,
+      "notes": "Party menu planning guide with preparation suggestions; not split into recipes.",
+      "schemaVersion": 1,
+      "sourceFile": "Notes/Traditional Korean Party Menu Ideas for Holiday Dinners.md",
+      "duplicateStatus": null
+    }
+  }
+]

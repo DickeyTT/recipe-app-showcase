@@ -2,6 +2,13 @@ import XCTest
 @testable import RecipeCore
 
 final class SyncTransportTests: XCTestCase {
+  func testSyncErrorsReadFriendly() {
+    // The alert shows localizedDescription; it must be plain English, not "error 1".
+    XCTAssertTrue(SyncNetworkError.pairingRejected.localizedDescription.localizedCaseInsensitiveContains("pairing code"))
+    for error in [SyncNetworkError.connectionClosed, .pairingRejected, .timedOut] {
+      XCTAssertFalse(error.localizedDescription.contains("SyncNetworkError"))
+    }
+  }
   private func tempDir() -> URL {
     let dir = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
     try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)

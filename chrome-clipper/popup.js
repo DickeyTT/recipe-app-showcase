@@ -1,279 +1,312 @@
-// Popup entry point. Step 4: capture, then show an editable preview (title,
-// image, ingredients, method). Save builds the Markdown bundle from the edited
-// fields and writes it to ~/Downloads/RecipeClips/.
+// Popup controller. After capture, the recipe is filed through a short wizard:
+// clip (confirm, with Edit details behind a link) -> collection -> categories ->
+// tags -> save. Chips and a single-select list replace the long checkbox forms.
 const FOLDER = "RecipeClips";
 
 const el = (id) => document.getElementById(id);
 const captureView = el("capture-view");
-const previewView = el("preview-view");
-const clipBtn = el("clip");
+const wizard = el("wizard");
 const status = el("status");
-const titleInput = el("title");
-const imageRow = el("image-row");
-const imagePreview = el("image-preview");
-const includeImage = el("include-image");
-const ingredientsTa = el("ingredients");
-const methodTa = el("method");
-const extraTa = el("extra");
-const extraSection = el("extra-section");
-const imagesHint = el("images-hint");
-const modeHint = el("mode-hint");
-const modeBasicBtn = el("mode-basic");
-const modeFullBtn = el("mode-full");
-const notebookSel = el("notebook");
-const notebookNew = el("notebook-new");
-const categoriesBox = el("categories-box");
-const tagsBox = el("tags-box");
-const tagsCount = el("tags-count");
-const viaLine = el("via");
+const wBody = el("w-body");
+const wStep = el("w-step");
+const wTitle = el("w-title");
+const wStatus = el("w-status");
+const backBtn = el("w-back");
+const nextBtn = el("w-next");
+const backX = el("w-backx");
+const wRt = el("w-rt");
+const scrollEl = el("scroll");
+const barEl = el("bar");
+const footEl = el("foot");
 
-// The user's notebooks, seeded once and editable; remembered between clips.
+el("w-close").addEventListener("click", () => window.parent.postMessage({ type: "recipeclip-close" }, "*"));
+
 const DEFAULT_NOTEBOOKS = [
   "Asian Cooking", "Bread Baking", "Cooking", "Desserts",
   "Ferment Preserves and Pickles", "Fish Recipes", "Jams and Chutney",
   "Lunches", "Mexican Dishes", "Pasta Dishes", "Pumpkin Recipes", "Salads",
   "Snacks and Dips", "Soups", "Vegetarian Recipes", "Web Clips",
 ];
-// A notebook's default category, mirroring the app, pre-ticked on selection.
-const NOTEBOOK_CATEGORIES = {
-  "Asian Cooking": ["asian"], "Bread Baking": ["bread-baking"], "Cooking": ["meat"],
-  "Desserts": ["desserts"], "Ferment Preserves and Pickles": ["ferments-pickles"],
-  "Fish Recipes": ["fish"], "Jams and Chutney": ["jams-chutneys"],
-  "Lunches": ["lunches-light-meals"], "Mexican Dishes": ["mexican"],
-  "Pasta Dishes": ["pasta-noodles"], "Salads": ["salads"],
-  "Snacks and Dips": ["starters-snacks", "sauces-dips-condiments"], "Soups": ["soups"],
-  "Vegetarian Recipes": ["vegetarian"],
-};
-
 let vocab = null;
-loadCatalogueVocab().then((v) => {
-  vocab = v;
-  renderCategories();
-  renderTags();
-});
-const backBtn = el("back");
-const saveBtn = el("save");
-const saveStatus = el("save-status");
-
-// The recipe as captured; editable fields are read back from the form on save.
 let captured = null;
-
-// Basic = title, hero, ingredients, method. Full also saves notes, prose and the
-// step photos. The last choice is remembered; first run defaults to Full.
-let mode = "full";
-try {
-  mode = localStorage.getItem("clipMode") === "basic" ? "basic" : "full";
-} catch {
-  /* private window: keep the default */
-}
-
-const linesOf = (text) =>
-  text.split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
-
-function applyMode() {
-  const full = mode === "full";
-  modeFullBtn.setAttribute("aria-pressed", String(full));
-  modeBasicBtn.setAttribute("aria-pressed", String(!full));
-  extraSection.classList.toggle("hidden", !full);
-  modeHint.textContent = full
-    ? "Full: notes, page text and step photos included."
-    : "Basic: title, image, ingredients and method only.";
-  try {
-    localStorage.setItem("clipMode", mode);
-  } catch {
-    /* ignore */
-  }
-}
-
-function setMode(next) {
-  mode = next;
-  applyMode();
-}
+let draft = null;
+const STEPS = ["clip", "collection", "categories", "tags"];
+let view = "clip";
 
 function notebooks() {
   try {
     const saved = JSON.parse(localStorage.getItem("clipNotebooks") || "null");
     if (Array.isArray(saved) && saved.length) return saved;
-  } catch {
-    /* ignore */
-  }
+  } catch { /* ignore */ }
   return DEFAULT_NOTEBOOKS;
 }
-
-function renderNotebooks() {
-  let last = "Web Clips";
+function persistNotebook(name) {
   try {
-    last = localStorage.getItem("clipNotebook") || last;
-  } catch {
-    /* ignore */
-  }
-  const options = notebooks()
-    .map((n) => `<option${n === last ? " selected" : ""}>${n}</option>`)
-    .join("");
-  notebookSel.innerHTML = `${options}<option value="__new__">New…</option>`;
-  notebookNew.classList.add("hidden");
+    localStorage.setItem("clipNotebook", name);
+    const list = notebooks();
+    if (!list.includes(name)) { list.push(name); list.sort(); localStorage.setItem("clipNotebooks", JSON.stringify(list)); }
+  } catch { /* ignore */ }
 }
-
-function renderCategories() {
-  if (!vocab) return;
-  let section = "";
-  categoriesBox.innerHTML = vocab.categories
-    .map((c) => {
-      const header = c.section !== section ? ((section = c.section), `<div class="section">${c.section}</div>`) : "";
-      const child = c.parentId ? " child" : "";
-      return `${header}<label class="cat${child}"><input type="checkbox" value="${c.id}" /> ${c.name}</label>`;
-    })
-    .join("");
+function lastNotebook() {
+  try { return localStorage.getItem("clipNotebook") || "Web Clips"; } catch { return "Web Clips"; }
 }
-
-function renderTags() {
-  if (!vocab) return;
-  let group = "";
-  tagsBox.innerHTML = vocab.tags
-    .map((t) => {
-      const header = t.group !== group ? ((group = t.group), `<div class="section">${t.group}</div>`) : "";
-      return `${header}<label><input type="checkbox" value="${t.tag}" /> ${t.tag}</label>`;
-    })
-    .join("");
-  tagsBox.addEventListener("change", enforceTagLimit);
-}
-
-const checkedValues = (box) =>
-  [...box.querySelectorAll("input:checked")].map((i) => i.value);
-
-function enforceTagLimit() {
-  const max = (vocab && vocab.maxTags) || 5;
-  const checked = checkedValues(tagsBox);
-  if (checked.length >= max) {
-    tagsBox.querySelectorAll("input:not(:checked)").forEach((i) => (i.disabled = true));
-  } else {
-    tagsBox.querySelectorAll("input").forEach((i) => (i.disabled = false));
-  }
-  tagsCount.textContent = `${checked.length} of ${max} chosen`;
-}
-
-function tickValues(box, values) {
-  const set = new Set(values);
-  box.querySelectorAll("input").forEach((i) => (i.checked = set.has(i.value)));
-}
-
-// Merge the notebook's default category into the current ticks (does not untick).
-function applyNotebookDefault() {
-  const defaults = NOTEBOOK_CATEGORIES[notebookSel.value] || [];
-  defaults.forEach((id) => {
-    const box = categoriesBox.querySelector(`input[value="${id}"]`);
-    if (box) box.checked = true;
-  });
+function lastMode() {
+  try { return localStorage.getItem("clipMode") === "basic" ? "basic" : "full"; } catch { return "full"; }
 }
 
 // The extractor runs in the page and returns the recipe as its last expression.
 async function capture() {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   if (!tab || !tab.id) throw new Error("No active tab.");
-  const [injection] = await chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    files: ["lib/extract.js"],
-  });
+  const [injection] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ["lib/extract.js"] });
   return injection?.result ?? null;
 }
 
-function showPreview(recipe) {
-  captured = recipe;
-  titleInput.value = recipe.title || "";
-  ingredientsTa.value = recipe.ingredients.join("\n");
-  methodTa.value = recipe.steps.join("\n");
+function buildDraft(recipe) {
+  const notesParts = [];
+  if (recipe.notes) notesParts.push("## Notes", "", recipe.notes, "");
+  if (recipe.body) notesParts.push(recipe.body);
+  return {
+    title: recipe.title || "",
+    ingredients: recipe.ingredients || [],
+    steps: recipe.steps || [],
+    notes: notesParts.join("\n").trim(),
+    bodyImages: recipe.bodyImages || [],
+    heroUrl: (recipe.images && recipe.images[0]) || null,
+    includeImage: Boolean(recipe.images && recipe.images[0]),
+    // Nothing is pre-selected: the user picks the collection, categories and tags
+    // each time. (Auto-guessing and remembering the last collection were unwanted.)
+    categories: new Set(),
+    tags: new Set(),
+    notebook: "",
+    mode: lastMode(),
+    source: recipe.source,
+  };
+}
 
-  // Pre-fill the extra box with the card's notes then the article prose
-  // (which already contains the removable `![[image N]]` lines).
-  const extraParts = [];
-  if (recipe.notes) extraParts.push("## Notes", "", recipe.notes, "");
-  if (recipe.body) extraParts.push(recipe.body);
-  extraTa.value = extraParts.join("\n").trim();
+const linesOf = (text) => text.split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
+const TITLES = {
+  clip: "Recipe clipped", edit: "Edit details", collection: "Which collection?",
+  categories: "Categories", tags: "Tags",
+};
 
-  const count = (recipe.bodyImages || []).length;
-  imagesHint.textContent = count
-    ? `${count} step photo${count === 1 ? "" : "s"} in the text as ![[image N]] lines. Delete a line to drop that photo.`
-    : "No step photos found on this page.";
-
-  // Notebook, categories and tags, pre-filled from the page for confirmation.
-  renderNotebooks();
-  const suggestion = vocab
-    ? suggestCatalogue(recipe, vocab)
-    : { categoryIds: [], tags: [], cuisine: "" };
-  tickValues(categoriesBox, suggestion.categoryIds);
-  applyNotebookDefault();
-  tickValues(tagsBox, suggestion.tags);
-  enforceTagLimit();
-  applyMode();
-
-  const hero = recipe.images && recipe.images[0];
-  if (hero) {
-    imagePreview.src = hero;
-    includeImage.checked = true;
-    imageRow.classList.remove("hidden");
+function setView(next) {
+  view = next;
+  const idx = STEPS.indexOf(view === "edit" ? "clip" : view);
+  document.querySelectorAll(".seg").forEach((s, n) => s.classList.toggle("on", n <= idx));
+  wStep.textContent = view === "edit" ? "Step 1 · details" : `Step ${idx + 1} of 4`;
+  wTitle.textContent = TITLES[view];
+  wStatus.textContent = "";
+  wBody.innerHTML = "";
+  RENDER[view]();
+  // Always start each step at the top, even if the previous one was scrolled.
+  scrollEl.scrollTop = 0;
+  if (view === "edit") {
+    backX.classList.remove("hidden");
+    backBtn.classList.add("hidden");
+    nextBtn.textContent = "Done";
+    nextBtn.disabled = false;
   } else {
-    imageRow.classList.add("hidden");
+    backX.classList.add("hidden");
+    backBtn.classList.toggle("hidden", idx === 0);
+    nextBtn.textContent = idx === STEPS.length - 1 ? "Save to library" : "Next";
+    nextBtn.disabled = false;
   }
-
-  viaLine.textContent =
-    recipe.source === "json-ld"
-      ? "Read from the page's structured data."
-      : "Read by page heuristic, so check it over.";
-  saveStatus.textContent = "";
-  captureView.classList.add("hidden");
-  previewView.classList.remove("hidden");
 }
 
-function showCapture() {
-  previewView.classList.add("hidden");
-  captureView.classList.remove("hidden");
-}
+const RENDER = {
+  clip() {
+    const modes = document.createElement("div");
+    modes.className = "modes";
+    modes.innerHTML =
+      `<button data-mode="basic" aria-pressed="${draft.mode === "basic"}">Basic</button>` +
+      `<button data-mode="full" aria-pressed="${draft.mode === "full"}">Full</button>`;
+    modes.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
+      draft.mode = b.dataset.mode;
+      try { localStorage.setItem("clipMode", draft.mode); } catch { /* ignore */ }
+      modes.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x.dataset.mode === draft.mode)));
+    }));
+    wBody.appendChild(modes);
 
-// chrome.downloads saves relative to the Downloads folder; the path is the full
-// sub-path. uniquify avoids clobbering, saveAs stays off for one click.
-function download(url, path) {
-  return chrome.downloads.download({
-    url,
-    filename: path,
-    conflictAction: "uniquify",
-    saveAs: false,
-  });
-}
+    const card = document.createElement("div");
+    card.className = "clipcard";
+    const photos = (draft.bodyImages || []).length;
+    const bits = [`${draft.ingredients.length} ingredients`, `${draft.steps.length} steps`];
+    if (draft.includeImage) bits.push("photo");
+    card.innerHTML =
+      (draft.heroUrl ? `<img class="thumb" src="${draft.heroUrl}" alt="">` : `<div class="thumb"></div>`) +
+      `<div><div class="title">${draft.title || "Untitled recipe"}</div><div class="meta">${bits.join(" · ")}</div></div>`;
+    wBody.appendChild(card);
 
-// Reassemble the recipe from the edited fields, then write images + Markdown.
-async function save() {
-  const full = mode === "full";
-  // Notebook: the dropdown choice, or a typed new name; remembered for next time.
-  let notebook = notebookSel.value;
-  if (notebook === "__new__") notebook = notebookNew.value.trim() || "Web Clips";
-  try {
-    localStorage.setItem("clipNotebook", notebook);
-    const list = notebooks();
-    if (!list.includes(notebook)) {
-      list.push(notebook);
-      list.sort();
-      localStorage.setItem("clipNotebooks", JSON.stringify(list));
+    const link = document.createElement("button");
+    link.className = "link";
+    link.innerHTML = `<span>Edit details<br><span class="d">title, photo, ingredients, method${draft.mode === "full" ? ", notes" : ""}</span></span><span class="chev">›</span>`;
+    link.addEventListener("click", () => setView("edit"));
+    wBody.appendChild(link);
+
+    if (draft.mode === "full" && photos) {
+      const hint = document.createElement("p");
+      hint.className = "hint";
+      hint.style.marginTop = "10px";
+      hint.textContent = `${photos} step photo${photos === 1 ? "" : "s"} included. Trim them under Edit details.`;
+      wBody.appendChild(hint);
     }
-  } catch {
-    /* ignore */
-  }
+  },
 
+  edit() {
+    const field = (labelText, value, tag, oninput) => {
+      const label = document.createElement("label");
+      label.className = "f";
+      label.textContent = labelText;
+      const input = document.createElement(tag);
+      input.className = "f-input";
+      if (tag === "input") input.type = "text";
+      input.value = value;
+      input.addEventListener("input", () => oninput(input.value));
+      wBody.appendChild(label);
+      wBody.appendChild(input);
+    };
+    field("Title", draft.title, "input", (v) => { draft.title = v; wRt.textContent = v; });
+
+    const photoLabel = document.createElement("label");
+    photoLabel.className = "f";
+    photoLabel.textContent = "Photo";
+    wBody.appendChild(photoLabel);
+    const imgrow = document.createElement("div");
+    imgrow.className = "imgrow";
+    if (draft.heroUrl) {
+      imgrow.innerHTML = `<img src="${draft.heroUrl}" alt=""><label><input type="checkbox" ${draft.includeImage ? "checked" : ""}> Include photo</label>`;
+      imgrow.querySelector("input").addEventListener("change", (e) => { draft.includeImage = e.target.checked; });
+    } else {
+      imgrow.innerHTML = `<span class="hint">No photo found on this page.</span>`;
+    }
+    wBody.appendChild(imgrow);
+
+    field("Ingredients", draft.ingredients.join("\n"), "textarea", (v) => { draft.ingredients = linesOf(v); });
+    field("Method", draft.steps.join("\n"), "textarea", (v) => { draft.steps = linesOf(v); });
+    if (draft.mode === "full") {
+      const l = document.createElement("label"); l.className = "f"; l.textContent = "Notes & extra text";
+      wBody.appendChild(l);
+      const t = document.createElement("textarea"); t.style.minHeight = "110px"; t.value = draft.notes;
+      t.addEventListener("input", () => { draft.notes = t.value; });
+      wBody.appendChild(t);
+      const h = document.createElement("p"); h.className = "hint"; h.style.marginTop = "6px";
+      h.textContent = "Step photos appear as ![[image N]] lines; delete a line to drop one.";
+      wBody.appendChild(h);
+    }
+  },
+
+  collection() {
+    const list = document.createElement("div");
+    // The collection is just where it's filed; it does not pre-tick categories
+    // (those come only from the page text).
+    const choose = (name, node) => {
+      draft.notebook = name;
+      list.querySelectorAll(".row").forEach((r) => r.classList.remove("on"));
+      node.classList.add("on");
+    };
+    notebooks().forEach((name) => {
+      const row = document.createElement("div");
+      row.className = "row" + (name === draft.notebook ? " on" : "");
+      row.innerHTML = `<span class="rc"></span>${name}`;
+      row.addEventListener("click", () => choose(name, row));
+      list.appendChild(row);
+    });
+    const newRow = document.createElement("div");
+    newRow.className = "row";
+    newRow.innerHTML = `<span class="rc"></span>+ New collection`;
+    const newInput = document.createElement("input");
+    newInput.id = "notebook-new"; newInput.type = "text"; newInput.placeholder = "New collection name";
+    newInput.className = "hidden"; newInput.style.marginTop = "2px";
+    newRow.addEventListener("click", () => {
+      list.querySelectorAll(".row").forEach((r) => r.classList.remove("on"));
+      newRow.classList.add("on"); newInput.classList.remove("hidden"); newInput.focus();
+      draft.notebook = "";
+    });
+    newInput.addEventListener("input", () => { draft.notebook = newInput.value.trim(); });
+    list.appendChild(newRow);
+    wBody.appendChild(list);
+    wBody.appendChild(newInput);
+  },
+
+  categories() {
+    const intro = document.createElement("p");
+    intro.className = "hint"; intro.style.margin = "0 0 10px";
+    intro.textContent = "Tap the categories for browsing and search.";
+    wBody.appendChild(intro);
+    if (!vocab) return;
+    const sections = [...new Set(vocab.categories.filter((c) => c.section !== "Other").map((c) => c.section))];
+    sections.forEach((section) => {
+      const g = document.createElement("div"); g.className = "grp"; g.textContent = section;
+      wBody.appendChild(g);
+      const chips = document.createElement("div"); chips.className = "chips";
+      vocab.categories.filter((c) => c.section === section).forEach((c) => {
+        const chip = document.createElement("span");
+        chip.className = "chip" + (draft.categories.has(c.id) ? " on" : "");
+        chip.textContent = c.name;
+        chip.addEventListener("click", () => {
+          if (draft.categories.has(c.id)) draft.categories.delete(c.id); else draft.categories.add(c.id);
+          chip.classList.toggle("on");
+        });
+        chips.appendChild(chip);
+      });
+      wBody.appendChild(chips);
+    });
+  },
+
+  tags() {
+    if (!vocab) return;
+    const max = vocab.maxTags || 5;
+    const intro = document.createElement("p");
+    intro.className = "hint"; intro.style.margin = "0 0 10px";
+    const counter = document.createElement("span");
+    intro.append("Up to five, for search. ", counter);
+    wBody.appendChild(intro);
+    const chipEls = [];
+    const refresh = () => {
+      counter.textContent = `${draft.tags.size} of ${max} chosen`;
+      chipEls.forEach((c) => c.classList.toggle("dim", draft.tags.size >= max && !draft.tags.has(c.dataset.tag)));
+    };
+    const groups = [...new Set(vocab.tags.map((t) => t.group))];
+    groups.forEach((group) => {
+      const g = document.createElement("div"); g.className = "grp"; g.textContent = group;
+      wBody.appendChild(g);
+      const chips = document.createElement("div"); chips.className = "chips";
+      vocab.tags.filter((t) => t.group === group).forEach((t) => {
+        const chip = document.createElement("span");
+        chip.className = "chip" + (draft.tags.has(t.tag) ? " on" : "");
+        chip.dataset.tag = t.tag; chip.textContent = t.tag;
+        chip.addEventListener("click", () => {
+          if (draft.tags.has(t.tag)) draft.tags.delete(t.tag);
+          else { if (draft.tags.size >= max) return; draft.tags.add(t.tag); }
+          chip.classList.toggle("on", draft.tags.has(t.tag));
+          refresh();
+        });
+        chips.appendChild(chip); chipEls.push(chip);
+      });
+      wBody.appendChild(chips);
+    });
+    refresh();
+  },
+};
+
+function download(url, path) {
+  return chrome.downloads.download({ url, filename: path, conflictAction: "uniquify", saveAs: false });
+}
+
+async function save() {
+  const full = draft.mode === "full";
   const recipe = {
     ...captured,
-    title: titleInput.value.trim() || "Untitled recipe",
-    ingredients: linesOf(ingredientsTa.value),
-    steps: linesOf(methodTa.value),
-    extra: full ? extraTa.value.trim() : "",
-    categories: checkedValues(categoriesBox),
-    tags: checkedValues(tagsBox),
-    images:
-      includeImage.checked && captured.images && captured.images[0]
-        ? [captured.images[0]]
-        : [],
+    title: draft.title.trim() || "Untitled recipe",
+    ingredients: draft.ingredients,
+    steps: draft.steps,
+    extra: full ? draft.notes.trim() : "",
+    categories: [...draft.categories],
+    tags: [...draft.tags],
+    images: draft.includeImage && draft.heroUrl ? [draft.heroUrl] : [],
   };
-
   const base = `${clipSlug(recipe.title)}-${clipStamp()}`;
-  // Each recipe gets its own folder; files inside reference each other by name.
   const dir = `${FOLDER}/${base}`;
 
   let imageFilename = null;
@@ -281,14 +314,9 @@ async function save() {
     imageFilename = `${base}.${imageExtension(recipe.images[0])}`;
     await download(recipe.images[0], `${dir}/${imageFilename}`);
   }
-
-  // Full mode: download each step photo whose `![[image N]]` line was kept, and
-  // rewrite that line to the local filename so it displays offline.
   let stepImages = 0;
   if (full) {
-    const wanted = (captured.bodyImages || []).filter((im) =>
-      recipe.extra.includes(`![[${im.token}]]`)
-    );
+    const wanted = (draft.bodyImages || []).filter((im) => recipe.extra.includes(`![[${im.token}]]`));
     for (let i = 0; i < wanted.length; i++) {
       const im = wanted[i];
       const name = `${base}-img-${i + 1}.${imageExtension(im.url)}`;
@@ -297,9 +325,7 @@ async function save() {
       stepImages++;
     }
   }
-
-  // Markdown, sidecar and a notebook-labels file (so the folder imports under one
-  // "Web Clips" collection instead of a notebook named after the recipe).
+  const notebook = draft.notebook || "Web Clips";
   const blobUrls = [];
   const writeText = (text, type, name) => {
     const url = URL.createObjectURL(new Blob([text], { type }));
@@ -311,54 +337,55 @@ async function save() {
     await writeText(buildSidecar(recipe), "application/json", `${base}.catalogue.json`);
     await writeText(JSON.stringify({ [base]: notebook }), "application/json", "notebook-labels.json");
   } finally {
-    // Give the downloads time to read the blobs before the popup revokes them.
     setTimeout(() => blobUrls.forEach(URL.revokeObjectURL), 10000);
   }
-  return { base, savedImage: Boolean(imageFilename), stepImages, recipe };
+  persistNotebook(notebook);
+  return { base, notebook, savedImage: Boolean(imageFilename), stepImages };
 }
 
-clipBtn.addEventListener("click", async () => {
-  clipBtn.disabled = true;
-  status.textContent = "Reading the page…";
+// Capture as soon as the panel opens, then go straight into the wizard.
+async function init() {
   try {
-    const recipe = await capture();
-    if (!recipe || !recipe.ok) {
-      status.textContent =
-        "Could not find a recipe on this page. Try a recipe page.";
+    const [v, cap] = await Promise.all([loadCatalogueVocab(), capture()]);
+    vocab = v;
+    captured = cap;
+    if (!captured || !captured.ok) {
+      status.textContent = "No recipe found on this page. Open a recipe, then click the clipper again.";
       return;
     }
-    showPreview(recipe);
+    draft = buildDraft(captured);
+    wRt.textContent = draft.title;
+    captureView.classList.add("hidden");
+    wizard.classList.remove("hidden");
+    barEl.classList.remove("hidden");
+    footEl.classList.remove("hidden");
+    setView("clip");
   } catch (error) {
     status.textContent = `Could not read the page: ${error.message}`;
-  } finally {
-    clipBtn.disabled = false;
   }
-});
+}
+init();
 
-backBtn.addEventListener("click", showCapture);
-modeBasicBtn.addEventListener("click", () => setMode("basic"));
-modeFullBtn.addEventListener("click", () => setMode("full"));
-notebookSel.addEventListener("change", () => {
-  notebookNew.classList.toggle("hidden", notebookSel.value !== "__new__");
-  if (notebookSel.value !== "__new__") applyNotebookDefault();
-});
-
-saveBtn.addEventListener("click", async () => {
-  saveBtn.disabled = true;
-  backBtn.disabled = true;
-  saveStatus.textContent = "Saving…";
+function currentIndex() { return STEPS.indexOf(view === "edit" ? "clip" : view); }
+backBtn.addEventListener("click", () => setView(STEPS[currentIndex() - 1]));
+backX.addEventListener("click", () => setView("clip"));
+nextBtn.addEventListener("click", async () => {
+  if (view === "edit") { setView("clip"); return; }
+  const idx = currentIndex();
+  if (idx < STEPS.length - 1) { setView(STEPS[idx + 1]); return; }
+  nextBtn.disabled = true;
+  wStatus.textContent = "Saving…";
   try {
-    const { base, savedImage, stepImages } = await save();
-    const bits = [savedImage ? "hero image" : null, stepImages ? `${stepImages} step photo${stepImages === 1 ? "" : "s"}` : null].filter(Boolean);
-    saveStatus.textContent = [
-      `Saved ${mode} clip to Downloads/${FOLDER}/${base}/`,
-      bits.length ? `With ${bits.join(" and ")}.` : "No images.",
+    const { base, notebook, savedImage, stepImages } = await save();
+    const bits = [savedImage ? "photo" : null, stepImages ? `${stepImages} step photos` : null].filter(Boolean);
+    wStatus.textContent = [
+      `Saved to ${notebook} (Downloads/${FOLDER}/${base}/).`,
+      bits.length ? `With ${bits.join(" and ")}.` : "",
       `Import the ${FOLDER} folder in the Mac app.`,
-    ].join("\n");
+    ].filter(Boolean).join("\n");
+    nextBtn.textContent = "Saved ✓";
   } catch (error) {
-    saveStatus.textContent = `Could not save: ${error.message}`;
-  } finally {
-    saveBtn.disabled = false;
-    backBtn.disabled = false;
+    wStatus.textContent = `Could not save: ${error.message}`;
+    nextBtn.disabled = false;
   }
 });

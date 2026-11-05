@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "notes": "Fixed tag list for the AI catalogue, agreed during the pilot review. The AI may choose only these tags, at most 5 per recipe. Tags never name ingredients, cuisines, categories or websites. Aliases are mapped to the canonical tag when found (in AI output, old data or user entry). The user can still add free tags by hand in the app.",
+  "notes": "Fixed tag list for the AI catalogue, agreed with the user on 25 October 2026. The AI may choose only these tags, at most 5 per recipe. Tags never name ingredients, cuisines, categories or websites. Aliases are mapped to the canonical tag when found (in AI output, old data or user entry). The user can still add free tags by hand in the app.",
   "maxTagsPerRecipe": 5,
   "groups": [
     {

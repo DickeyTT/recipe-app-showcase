@@ -1,12 +1,15 @@
 {
   "manifest_version": 3,
   "name": "RecipeApp Clipper",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "Capture the recipe on the current page as a Markdown bundle for the RecipeApp Mac library.",
   "permissions": ["activeTab", "scripting", "downloads"],
+  "background": { "service_worker": "background.js" },
+  "web_accessible_resources": [
+    { "resources": ["popup.html"], "matches": ["<all_urls>"] }
+  ],
   "action": {
     "default_title": "Clip this recipe",
-    "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon-16.png",
       "48": "icons/icon-48.png",

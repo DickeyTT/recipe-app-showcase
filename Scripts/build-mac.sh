@@ -3,7 +3,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p "$PWD/working/tmp"
 export TMPDIR="$PWD/working/tmp"
-output_dir="${1:-$PWD/working/builds/RecipeApp-0.2.1}"
+output_dir="${1:-$PWD/working/builds/RecipeApp-1.0.0}"
 mkdir -p "$output_dir"
 output_dir="$(cd "$output_dir" && pwd)"
 export CLANG_MODULE_CACHE_PATH="$PWD/working/module-cache"
@@ -28,8 +28,8 @@ cat > "$app/Contents/Info.plist" <<'PLIST'
 <key>CFBundleIconFile</key><string>AppIcon</string>
 <key>CFBundleExecutable</key><string>RecipeApp</string>
 <key>CFBundlePackageType</key><string>APPL</string>
-<key>CFBundleShortVersionString</key><string>0.2.1</string>
-<key>CFBundleVersion</key><string>7</string>
+<key>CFBundleShortVersionString</key><string>1.0.0</string>
+<key>CFBundleVersion</key><string>16</string>
 <key>LSMinimumSystemVersion</key><string>13.0</string>
 <key>NSHighResolutionCapable</key><true/>
 <key>NSLocalNetworkUsageDescription</key><string>RecipeApp shares your recipes with your iPhone over the local network during a sync.</string>

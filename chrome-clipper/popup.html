@@ -6,143 +6,144 @@
     <title>RecipeApp Clipper</title>
     <style>
       :root {
-        color-scheme: light dark;
-        --accent: #b4532a;
-        --fg: #1c1c1e;
-        --muted: #6b6b70;
-        --bg: #ffffff;
-        --field: #f4f4f5;
-        --line: #e2e2e4;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --fg: #f2f2f4;
-          --muted: #9a9aa0;
-          --bg: #1c1c1e;
-          --field: #2c2c2e;
-          --line: #3a3a3c;
-        }
+        --accent: #3f6b52;
+        --accent-strong: #35593f;
+        --accent-bg: #e9f0ec;
+        --fg: #26231f;
+        --muted: #837d74;
+        --faint: #aaa49a;
+        --card: #ffffff;
+        --field: #f4f1ec;
+        --line: #ece6de;
+        --line-strong: #ddd6cc;
+        --radius: 11px;
+        --shadow: 0 1px 2px rgba(60, 45, 25, 0.06);
       }
       * { box-sizing: border-box; }
+      html, body { height: 100%; }
       body {
-        width: 380px;
         margin: 0;
-        padding: 14px 16px;
-        font: 13px/1.4 -apple-system, system-ui, sans-serif;
+        font: 13px/1.45 -apple-system, "SF Pro Text", system-ui, sans-serif;
         color: var(--fg);
-        background: var(--bg);
+        background: var(--card);
+        border-radius: 16px;
+        -webkit-font-smoothing: antialiased;
       }
-      h1 { font-size: 14px; margin: 0 0 2px; }
-      .sub { color: var(--muted); margin: 0 0 12px; }
-      button {
-        padding: 9px 12px;
-        font-size: 13px;
-        font-weight: 600;
-        border-radius: 8px;
-        border: none;
-        cursor: pointer;
-      }
-      button.primary { color: #fff; background: var(--accent); width: 100%; }
-      button.secondary {
-        color: var(--fg);
-        background: var(--field);
-        border: 1px solid var(--line);
-      }
+      .panel { display: flex; flex-direction: column; height: 100%; border-radius: 16px; overflow: hidden; }
+      button { font: inherit; cursor: pointer; transition: background 0.12s, border-color 0.12s, transform 0.06s; }
+      button:active { transform: scale(0.99); }
       button:disabled { opacity: 0.5; cursor: default; }
-      #status { margin-top: 10px; color: var(--muted); min-height: 1.4em; white-space: pre-line; }
-
       .hidden { display: none; }
-      label { display: block; font-weight: 600; margin: 12px 0 4px; }
-      input[type="text"], textarea {
-        width: 100%;
-        padding: 7px 9px;
-        font: inherit;
-        color: var(--fg);
-        background: var(--field);
-        border: 1px solid var(--line);
-        border-radius: 7px;
-        resize: vertical;
+
+      .ph { display: flex; align-items: center; gap: 10px; padding: 13px 15px; border-bottom: 1px solid var(--line); flex: none; }
+      .ph .ic { width: 28px; height: 28px; border-radius: 8px; flex: none; }
+      .ph .nm { font-weight: 600; font-size: 13px; letter-spacing: -0.01em; }
+      .ph .rt { color: var(--muted); font-size: 11px; margin-top: 1px; max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .ph .x { margin-left: auto; border: none; background: transparent; color: var(--faint); font-size: 20px; line-height: 1; padding: 2px 4px; border-radius: 7px; }
+      .ph .x:hover { background: var(--field); color: var(--muted); }
+
+      .bar { display: flex; gap: 5px; padding: 14px 16px 0; flex: none; }
+      .seg { flex: 1; height: 5px; border-radius: 999px; background: var(--line); transition: background 0.2s; }
+      .seg.on { background: var(--accent); }
+
+      .scroll { flex: 1; overflow-y: auto; padding: 14px 16px; }
+      .scroll::-webkit-scrollbar { width: 8px; }
+      .scroll::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 8px; }
+
+      .primary { color: #fff; background: var(--accent); border: none; border-radius: var(--radius); padding: 12px 14px; font-weight: 600; letter-spacing: 0.01em; }
+      .primary:hover { background: var(--accent-strong); }
+      .secondary { color: var(--fg); background: var(--card); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 12px 14px; font-weight: 600; }
+      .secondary:hover { background: var(--field); }
+
+      #capture-view { padding: 24px 4px; text-align: center; }
+      #capture-view .lead { color: var(--muted); margin: 0 0 16px; font-size: 13px; }
+      #capture-view .primary { width: 100%; }
+      #status { margin: 14px 2px 0; color: var(--muted); min-height: 1.4em; white-space: pre-line; font-size: 12px; }
+
+      .whead { margin-bottom: 4px; }
+      .whead .back-x { border: none; background: transparent; color: var(--muted); font-size: 22px; line-height: 1; padding: 0 2px; margin-bottom: 2px; }
+      .wstep { color: var(--faint); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin: 0; }
+      .wtitle { font-size: 19px; font-weight: 600; margin: 3px 0 10px; letter-spacing: -0.01em; }
+
+      .foot { display: flex; gap: 9px; padding: 13px 16px; border-top: 1px solid var(--line); flex: none; }
+      .foot button { flex: 1; }
+      .foot .primary { flex: 1.4; }
+      #w-status { color: var(--muted); min-height: 1.2em; margin: 10px 0 0; white-space: pre-line; font-size: 12px; }
+
+      .modes { display: flex; background: var(--field); border-radius: var(--radius); padding: 3px; gap: 3px; margin-bottom: 16px; }
+      .modes button { flex: 1; border: none; background: transparent; color: var(--muted); padding: 8px; font-weight: 600; border-radius: 8px; }
+      .modes button[aria-pressed="true"] { background: var(--card); color: var(--fg); box-shadow: var(--shadow); }
+
+      .clipcard { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
+      .thumb { width: 80px; height: 60px; border-radius: 10px; object-fit: cover; background: var(--accent-bg); flex: none; }
+      .clipcard .title { font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+      .clipcard .meta { color: var(--muted); font-size: 12px; margin-top: 3px; }
+
+      .link { display: flex; align-items: center; gap: 11px; width: 100%; text-align: left; padding: 13px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--fg); }
+      .link:hover { border-color: var(--line-strong); background: var(--field); }
+      .link .chev { margin-left: auto; color: var(--faint); font-size: 18px; }
+      .link .d { color: var(--muted); font-size: 12px; font-weight: 400; margin-top: 1px; }
+
+      label.f { display: block; font-weight: 600; font-size: 12px; margin: 15px 0 6px; }
+      .grp { color: var(--faint); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin: 16px 0 8px; }
+      input[type="text"], textarea, #notebook-new {
+        width: 100%; padding: 10px 11px; font: inherit; color: var(--fg);
+        background: var(--field); border: 1px solid var(--line); border-radius: var(--radius); resize: vertical;
       }
-      textarea { min-height: 72px; }
-      .hint { color: var(--muted); font-weight: 400; font-size: 12px; }
-      .image-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
-      .image-row img {
-        width: 56px; height: 56px; object-fit: cover;
-        border-radius: 7px; border: 1px solid var(--line);
-      }
-      .image-row label { margin: 0; font-weight: 400; }
-      .actions { display: flex; gap: 8px; margin-top: 16px; }
-      .actions .primary { flex: 1; }
-      .via { color: var(--muted); font-size: 12px; margin: 10px 0 0; }
-      .modes { display: flex; gap: 0; margin-bottom: 4px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
-      .modes button {
-        flex: 1; border: none; border-radius: 0; font-weight: 600;
-        background: var(--field); color: var(--fg); padding: 8px;
-      }
-      .modes button[aria-pressed="true"] { background: var(--accent); color: #fff; }
-      select { width: 100%; padding: 7px 9px; font: inherit; color: var(--fg); background: var(--field); border: 1px solid var(--line); border-radius: 7px; }
-      .checklist { max-height: 132px; overflow-y: auto; border: 1px solid var(--line); border-radius: 7px; padding: 6px 8px; background: var(--field); }
-      .checklist .section { font-weight: 600; color: var(--muted); font-size: 11px; text-transform: uppercase; margin: 6px 0 2px; }
-      .checklist label { display: block; font-weight: 400; margin: 2px 0; }
-      .checklist label.child { padding-left: 14px; }
+      input[type="text"]:focus, textarea:focus, #notebook-new:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-bg); }
+      textarea { min-height: 64px; }
+      .imgrow { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+      .imgrow img { width: 60px; height: 45px; object-fit: cover; border-radius: 8px; background: var(--accent-bg); }
+
+      .row { display: flex; align-items: center; gap: 11px; padding: 12px 13px; border: 1px solid var(--line); border-radius: 12px; margin-bottom: 8px; cursor: pointer; background: var(--card); }
+      .row:hover { border-color: var(--line-strong); }
+      .row .rc { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--faint); flex: none; transition: 0.12s; }
+      .row.on { border-color: var(--accent); background: var(--accent-bg); font-weight: 600; }
+      .row.on .rc { border-color: var(--accent); background: var(--accent); box-shadow: inset 0 0 0 3px var(--accent-bg); }
+
+      .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+      .chip { border: 1px solid var(--line); background: var(--card); color: #4a443e; border-radius: 999px; padding: 7px 14px; font-size: 13px; line-height: 1.25; cursor: pointer; transition: 0.12s; }
+      .chip:hover { border-color: var(--line-strong); }
+      .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+      .chip.dim { opacity: 0.4; cursor: default; }
+
+      .hint { color: var(--muted); font-size: 12px; }
     </style>
   </head>
   <body>
-    <h1>RecipeApp Clipper</h1>
-    <p class="sub">Capture this page into your recipe library.</p>
+    <div class="panel">
+      <header class="ph">
+        <img class="ic" src="icons/icon-48.png" alt="" />
+        <div><div class="nm">Clip recipe</div><div class="rt" id="w-rt"></div></div>
+        <button class="x" id="w-close" aria-label="Close">×</button>
+      </header>
 
-    <!-- View 1: capture -->
-    <section id="capture-view">
-      <button id="clip" class="primary" type="button">Clip this recipe</button>
-      <p id="status">Open a recipe page, then clip it.</p>
-    </section>
-
-    <!-- View 2: editable preview -->
-    <section id="preview-view" class="hidden">
-      <div class="modes" role="group" aria-label="Clip detail">
-        <button id="mode-basic" type="button" aria-pressed="false">Basic</button>
-        <button id="mode-full" type="button" aria-pressed="true">Full</button>
-      </div>
-      <p class="hint" id="mode-hint"></p>
-
-      <label for="notebook">Notebook <span class="hint">which collection to file it under</span></label>
-      <select id="notebook"></select>
-      <input id="notebook-new" type="text" placeholder="New notebook name" class="hidden" style="margin-top:6px;" />
-
-      <label for="title">Title</label>
-      <input id="title" type="text" />
-
-      <div class="image-row" id="image-row">
-        <img id="image-preview" alt="" />
-        <label><input id="include-image" type="checkbox" checked /> Include image</label>
+      <div class="bar hidden" id="bar">
+        <span class="seg" data-seg="0"></span><span class="seg" data-seg="1"></span>
+        <span class="seg" data-seg="2"></span><span class="seg" data-seg="3"></span>
       </div>
 
-      <label for="ingredients">Ingredients <span class="hint">one per line</span></label>
-      <textarea id="ingredients"></textarea>
+      <div class="scroll" id="scroll">
+        <section id="capture-view">
+          <p id="status">Reading the page…</p>
+        </section>
 
-      <label for="method">Method <span class="hint">one step per line</span></label>
-      <textarea id="method"></textarea>
-
-      <div id="extra-section">
-        <label for="extra">Notes &amp; extra text <span class="hint">tips, FAQs, storage; trim anything you don't want</span></label>
-        <textarea id="extra" style="min-height: 120px;"></textarea>
-        <p class="hint" id="images-hint"></p>
+        <section id="wizard" class="hidden">
+          <div class="whead">
+            <button id="w-backx" class="back-x hidden" aria-label="Back">‹</button>
+            <p class="wstep" id="w-step"></p>
+            <p class="wtitle" id="w-title"></p>
+          </div>
+          <div id="w-body"></div>
+          <p id="w-status"></p>
+        </section>
       </div>
 
-      <label>Categories <span class="hint">for browsing and search</span></label>
-      <div id="categories-box" class="checklist"></div>
-
-      <label>Tags <span class="hint" id="tags-count"></span></label>
-      <div id="tags-box" class="checklist"></div>
-
-      <p class="via" id="via"></p>
-
-      <div class="actions">
-        <button id="back" class="secondary" type="button">Back</button>
-        <button id="save" class="primary" type="button">Save to library</button>
+      <div class="foot hidden" id="foot">
+        <button id="w-back" class="secondary">Back</button>
+        <button id="w-next" class="primary">Next</button>
       </div>
-      <p id="save-status"></p>
-    </section>
+    </div>
 
     <script src="lib/markdown.js"></script>
     <script src="lib/catalogue.js"></script>

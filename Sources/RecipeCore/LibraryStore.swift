@@ -20,14 +20,10 @@ public final class LibraryStore: @unchecked Sendable {
     context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
     context.persistentStoreCoordinator = coordinator
     try context.performAndWait {
-      let request = NSFetchRequest<NSManagedObject>(entityName: "Recipe")
-      request.predicate = NSPredicate(format: "thumbnailPath == nil AND heroAssetPath != nil")
-      for object in try context.fetch(request) {
-        object.setValue(
-          RecipeImages.makeThumbnail(
-            heroPath: object.value(forKey: "heroAssetPath") as? String,
-            assetsDirectory: assetsDirectory), forKey: "thumbnailPath")
-      }
+      // Only the cheap fingerprint backfill runs at open. Thumbnail generation is
+      // heavy for a large library (it decodes every hero), so it is no longer done
+      // here - it froze launch after a big sync. Callers run backfillThumbnails()
+      // off the main thread instead.
       let missing = NSFetchRequest<NSManagedObject>(entityName: "Recipe")
       missing.predicate = NSPredicate(format: "contentFingerprint == nil")
       for object in try context.fetch(missing) {
@@ -39,6 +35,23 @@ public final class LibraryStore: @unchecked Sendable {
     }
     // Best-effort housekeeping must never prevent a library from opening.
     _ = try? removeOldOrphanAssets()
+  }
+
+  /// Generate thumbnails for recipes that have a hero photo but no thumbnail yet.
+  /// Decodes each hero, so it is heavy for a large library; run it off the main
+  /// thread. Safe to call repeatedly: it only touches recipes still missing one.
+  public func backfillThumbnails() throws {
+    try context.performAndWait {
+      let request = NSFetchRequest<NSManagedObject>(entityName: "Recipe")
+      request.predicate = NSPredicate(format: "thumbnailPath == nil AND heroAssetPath != nil")
+      for object in try context.fetch(request) {
+        object.setValue(
+          RecipeImages.makeThumbnail(
+            heroPath: object.value(forKey: "heroAssetPath") as? String,
+            assetsDirectory: assetsDirectory), forKey: "thumbnailPath")
+      }
+      if context.hasChanges { try context.save() }
+    }
   }
 
   /// Protect recipe IDs, shared assets, thumbnails and cook photographs, including deleted recipes.

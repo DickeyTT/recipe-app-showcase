@@ -31,6 +31,7 @@ final class ImageTests: XCTestCase {
     let directory = root.appendingPathComponent("Library")
     var store: LibraryStore? = try LibraryStore(directory: directory)
     XCTAssertEqual(try store!.importURLs([file]).imported, 1)
+    try store!.backfillThumbnails()
     let recipe = try XCTUnwrap(store!.recipes().first)
     let path = try XCTUnwrap(recipe.thumbnailPath)
     let thumbnail = store!.assetsDirectory.appendingPathComponent(path)
@@ -58,6 +59,7 @@ final class ImageTests: XCTestCase {
     try coordinator.remove(persistent)
     try FileManager.default.removeItem(at: thumbnail)
     let reopened = try LibraryStore(directory: directory)
+    try reopened.backfillThumbnails()
     XCTAssertEqual(try reopened.recipe(id: recipe.id)?.thumbnailPath, path)
     XCTAssertTrue(FileManager.default.fileExists(atPath: thumbnail.path))
   }

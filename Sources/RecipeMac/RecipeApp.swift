@@ -93,62 +93,38 @@ enum SearchToken: Identifiable, Hashable {
   var icon: String { switch self { case .category: return "square.grid.2x2"; case .tag: return "tag" } }
 }
 
-/// Runs the Mac side of sync: advertises on the local network with a pairing code and applies each
-/// iPhone sync as it happens. The Mac is the content source of truth.
-@MainActor final class MacSyncHost: ObservableObject {
-  @Published var running = false
-  @Published var code = ""
-  @Published var status = "Not sharing. Start to let your iPhone sync."
-  private var server: SyncServer?
-  private let library: LibraryModel
-  init(library: LibraryModel) { self.library = library }
-  func start() {
-    guard let store = library.store, !running else { return }
+/// A stable 6-digit pairing code for this Mac, generated once and reused, so the
+/// iPhone keeps syncing without re-entering it every time.
+enum SyncPairing {
+  static let defaultsKey = "syncPairingCode"
+  static func code() -> String {
+    let defaults = UserDefaults.standard
+    if let existing = defaults.string(forKey: defaultsKey), existing.count == 6 { return existing }
     let code = String(format: "%06d", Int.random(in: 0...999999))
-    let server = SyncServer(store: store, pairingCode: code, displayName: Host.current().localizedName ?? "Recipe Mac")
-    server.onSyncComplete = { error in
-      DispatchQueue.main.async {
-        if let error { self.status = "Last sync failed: \(error.localizedDescription)" }
-        else { self.status = "Synced with iPhone at " + Date().formatted(date: .omitted, time: .shortened); self.library.reload() }
-      }
-    }
-    do {
-      _ = try server.start()
-      self.server = server
-      self.code = code
-      self.running = true
-      self.status = "Sharing. On your iPhone, open Sync and enter the code."
-    } catch { self.status = "Could not start sharing: \(error.localizedDescription)" }
-  }
-  func stop() {
-    server?.stop(); server = nil; running = false
-    status = "Not sharing. Start to let your iPhone sync."
+    defaults.set(code, forKey: defaultsKey)
+    return code
   }
 }
 
+/// The Sync window just shows the pairing code and status. The Mac shares
+/// automatically while the app is open (see `LibraryModel.startSharing`).
 struct SyncHostView: View {
-  @StateObject private var host: MacSyncHost
+  @ObservedObject var library: LibraryModel
   @Environment(\.dismiss) private var dismiss
-  init(library: LibraryModel) { _host = StateObject(wrappedValue: MacSyncHost(library: library)) }
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Text("Sync with iPhone").font(.title2.bold())
-      Text("Your iPhone syncs recipes from this Mac and sends back favourites, cooked notes and views. They connect only while sharing is on, over your local network.")
+      Text("Your iPhone syncs recipes from this Mac and sends back favourites, cooked notes and views. This Mac shares while the app is open, over your local network.")
         .font(.callout).foregroundStyle(.secondary)
-      if host.running {
-        VStack(alignment: .leading, spacing: 4) {
-          Text("Pairing code").font(.caption).foregroundStyle(.secondary)
-          Text(host.code).font(.system(size: 34, weight: .bold, design: .rounded)).monospacedDigit().textSelection(.enabled)
-        }
+      VStack(alignment: .leading, spacing: 4) {
+        Text("Pairing code").font(.caption).foregroundStyle(.secondary)
+        Text(library.pairingCode).font(.system(size: 34, weight: .bold, design: .rounded)).monospacedDigit().textSelection(.enabled)
+        Text("Enter this on your iPhone once. It is remembered, so later syncs are a single tap.")
+          .font(.caption).foregroundStyle(.secondary)
       }
-      Text(host.status).font(.callout)
-      HStack {
-        if host.running { Button("Stop sharing", role: .destructive) { host.stop() } }
-        else { Button("Start sharing") { host.start() }.buttonStyle(.borderedProminent) }
-        Spacer()
-        Button("Done") { dismiss() }.keyboardShortcut(.defaultAction)
-      }
-    }.padding(24).frame(width: 420).onDisappear { host.stop() }
+      Text(library.syncStatus).font(.callout)
+      HStack { Spacer(); Button("Done") { dismiss() }.keyboardShortcut(.defaultAction) }
+    }.padding(24).frame(width: 420)
   }
 }
 
@@ -167,6 +143,11 @@ struct SyncHostView: View {
   // Set by the "Sync with iPhone" command; LibraryView presents the sync host sheet.
   @Published var showSync = false
   var store: LibraryStore?
+  // Sync: a stable pairing code and a server that shares while the app is open.
+  let pairingCode = SyncPairing.code()
+  @Published var sharing = false
+  @Published var syncStatus = "Not sharing yet."
+  private var syncServer: SyncServer?
   /// Reload all recipes from the store, e.g. after a sync has changed them underneath us.
   func reload() {
     do { recipes = try store?.recipes(includeDeleted: true) ?? [] }
@@ -185,7 +166,43 @@ struct SyncHostView: View {
       store = try LibraryStore(directory: location)
       recipes = try store!.recipes(includeDeleted: true)
       searchIndex.update(recipes)
+      startSharing()
+      backfillThumbnails()
     } catch { self.error = error.localizedDescription }
+  }
+  /// Generate any missing thumbnails off the main thread, then reload. Done here
+  /// rather than at store open so a large library (or a fresh sync) opens quickly.
+  func backfillThumbnails() {
+    guard let store else { return }
+    DispatchQueue.global(qos: .utility).async {
+      try? store.backfillThumbnails()
+      DispatchQueue.main.async { self.reload() }
+    }
+  }
+  /// Share with the iPhone while the app is open, using the stable pairing code.
+  /// The iPhone initiates each sync; this just keeps the Mac discoverable.
+  func startSharing() {
+    guard let store, syncServer == nil else { return }
+    let server = SyncServer(store: store, pairingCode: pairingCode, displayName: Host.current().localizedName ?? "Recipe Mac")
+    server.onSyncComplete = { [weak self] error in
+      DispatchQueue.main.async {
+        guard let self else { return }
+        if let error { self.syncStatus = "Last sync failed: \(error.localizedDescription)" }
+        else {
+          self.syncStatus = "Synced with iPhone at " + Date().formatted(date: .omitted, time: .shortened)
+          self.reload()
+          self.backfillThumbnails()
+        }
+      }
+    }
+    do {
+      _ = try server.start()
+      syncServer = server
+      sharing = true
+      syncStatus = "Sharing. On your iPhone, open Sync and tap this Mac."
+    } catch {
+      syncStatus = "Could not start sharing: \(error.localizedDescription)"
+    }
   }
   func chooseImport() { chooseImport(asNotes: false) }
   func chooseImport(asNotes: Bool) {
@@ -215,6 +232,7 @@ struct SyncHostView: View {
         report = result
         reportVersion = UUID()
         if selected == nil { selected = recipes.first?.id }
+        backfillThumbnails()
       } catch { self.error = error.localizedDescription }
       accessed.forEach { $0.stopAccessingSecurityScopedResource() }
       busy = false
@@ -375,7 +393,6 @@ struct RecipeWindow: View {
   @EnvironmentObject var library: LibraryModel
   let recipeID: UUID?
   @State private var showOriginal = false
-  @State private var editing: Recipe?
   private var recipe: Recipe? { library.recipes.first { $0.id == recipeID } }
   var body: some View {
     Group {
@@ -383,20 +400,12 @@ struct RecipeWindow: View {
         RecipeDetail(recipe: recipe, showOriginal: showOriginal)
           .navigationTitle(recipe.title)
           .toolbar {
-            ToolbarItem { KeepScreenOnButton() }
             ToolbarItem {
               Button { showOriginal.toggle() } label: {
                 Label(showOriginal ? "Catalogued view" : "Original Markdown", systemImage: "doc.plaintext")
               }.help(showOriginal ? "Show the tidied recipe" : "Show the original clipping")
             }
-            ToolbarItem {
-              Button { editing = recipe } label: { Label("Edit", systemImage: "pencil") }
-                .labelStyle(.titleAndIcon).keyboardShortcut("e", modifiers: .command)
-                .help(recipe.isNote ? "Edit note (⌘E)" : "Edit recipe (⌘E)")
-                .disabled(library.busy || recipe.deletedAt != nil)
-            }
           }
-          .sheet(item: $editing) { RecipeEditor(recipe: $0).environmentObject(library) }
       } else {
         VStack(spacing: 12) {
           Image(systemName: "fork.knife").font(.largeTitle).accessibilityHidden(true)
@@ -673,7 +682,7 @@ struct LibraryView: View {
       ToolbarItem {
         Picker("Sort", selection: $sort) {
           ForEach(RecipeSort.allCases, id: \.self) { Text($0.rawValue).tag($0) }
-        }.pickerStyle(.menu)
+        }.pickerStyle(.menu).help("Change how recipes are sorted")
       }
       ToolbarItem {
         if let recipe = library.recipes.first(where: { $0.id == library.selected }) {
@@ -830,7 +839,9 @@ struct RecipeDetail: View {
             Image(systemName: recipe.favourite ? "heart.fill" : "heart").font(.title2)
               .accessibilityLabel(recipe.favourite ? "Remove favourite" : "Add favourite")
           }.buttonStyle(.plain)
+            .help(recipe.favourite ? "Remove from favourites" : "Add to favourites")
         }
+        CookingModeToggle()
         VStack(alignment: .leading, spacing: 8) {
           // Collection, ownership and tags on one line.
           HStack(alignment: .firstTextBaseline, spacing: 10) {

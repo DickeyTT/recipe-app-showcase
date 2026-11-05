@@ -1,7 +1,19 @@
 import Foundation
 import Network
 
-public enum SyncNetworkError: Error { case connectionClosed, pairingRejected, timedOut }
+public enum SyncNetworkError: LocalizedError {
+  case connectionClosed, pairingRejected, timedOut
+  public var errorDescription: String? {
+    switch self {
+    case .pairingRejected:
+      return "That pairing code did not match. On the Mac, open File ▸ Sync with iPhone to see the code, then enter it again."
+    case .connectionClosed:
+      return "The connection to the Mac dropped. Make sure the Mac app is open on the same Wi-Fi, then try again."
+    case .timedOut:
+      return "The Mac did not respond. Make sure the Mac app is open on the same Wi-Fi, then try again."
+    }
+  }
+}
 
 /// The Bonjour service type both sides use to find each other on the local network.
 public let recipeSyncServiceType = "_recipesync._tcp"
@@ -138,9 +150,12 @@ public final class SyncBrowser {
     parameters.includePeerToPeer = true
     let browser = NWBrowser(for: .bonjour(type: recipeSyncServiceType, domain: nil), using: parameters)
     browser.browseResultsChangedHandler = { results, _ in
+      // The same Mac can appear on more than one interface (Wi-Fi and peer-to-peer),
+      // so keep one entry per name.
+      var seen = Set<String>()
       let macs: [DiscoveredMac] = results.compactMap { result in
-        if case let .service(name, _, _, _) = result.endpoint { return DiscoveredMac(name: name, endpoint: result.endpoint) }
-        return nil
+        guard case let .service(name, _, _, _) = result.endpoint, seen.insert(name).inserted else { return nil }
+        return DiscoveredMac(name: name, endpoint: result.endpoint)
       }
       DispatchQueue.main.async { onChange(macs.sorted { $0.name < $1.name }) }
     }

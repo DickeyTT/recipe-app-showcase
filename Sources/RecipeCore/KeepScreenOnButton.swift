@@ -8,21 +8,34 @@ public struct ScreenAwakeState {
   public mutating func deactivate() { enabled = false }
 }
 
-public struct KeepScreenOnButton: View {
+/// A labelled switch that keeps the display awake while a recipe is open, for
+/// reading a recipe hands-free at the hob. Leaving the recipe or sending the app
+/// to the background turns it off, rather than resuming it later.
+public struct CookingModeToggle: View {
   @Environment(\.scenePhase) private var scenePhase
   @State private var state = ScreenAwakeState()
   @StateObject private var wake = CookingWakeController()
   public init() {}
   public var body: some View {
-    Button {
-      state.toggle()
-      wake.setEnabled(state.enabled && scenePhase == .active)
-    } label: {
-      Label("Keep screen on", systemImage: state.enabled ? "sun.max.fill" : "sun.max")
+    let isOn = Binding(
+      get: { state.enabled },
+      set: { on in
+        if on != state.enabled { state.toggle() }
+        wake.setEnabled(state.enabled && scenePhase == .active)
+      })
+    // A compact labelled switch, sized to sit neatly inline in the recipe.
+    return HStack(spacing: 8) {
+      Image(systemName: "sun.max").foregroundStyle(.secondary).accessibilityHidden(true)
+      Text("Cooking Mode")
+      Toggle("Cooking Mode", isOn: isOn).labelsHidden().toggleStyle(.switch).controlSize(.small)
     }
-    .foregroundStyle(state.enabled ? Color.accentColor : Color.primary)
+    .font(.callout)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("Cooking Mode")
     .accessibilityValue(state.enabled ? "On" : "Off")
-    .help(state.enabled ? "Turn off Keep screen on" : "Keep the display awake while this recipe is open")
+    .help(state.enabled
+      ? "Cooking Mode is on: the screen stays awake. Switch off to let it sleep."
+      : "Cooking Mode: keep the screen awake while this recipe is open")
     .onChange(of: scenePhase) { phase in
       if phase != .active { state.deactivate(); wake.setEnabled(false) }
     }

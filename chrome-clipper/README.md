@@ -50,16 +50,21 @@ or each clip prompts three times (one per file).
 
 ## Clip a recipe
 
-1. Open a recipe page and click the clipper icon.
-2. Click **Clip this recipe**. An editable preview appears.
-3. Choose **Basic** or **Full** at the top. Pick the **Notebook**, and check the
-   **Categories** and **Tags** (pre-ticked from the page; up to 5 tags). Fix the
-   title, untick the hero image if you don't want it, tidy any stray line. In Full,
-   trim the **Notes & extra text** box (delete any trailing promo, and any
-   `![[image N]]` line for a step photo you don't want).
-4. Click **Save to library**. The files land in `~/Downloads/RecipeClips/`.
+1. On a recipe page, click the clipper icon. A panel opens on the right of the
+   window (click the icon again, or the ✕, to close it). Click **Clip this recipe**.
+2. A short four-step flow opens:
+   - **Recipe clipped** — a confirmation with the title, counts and photo, plus a
+     **Basic / Full** choice. Everything editable (title, photo, ingredients,
+     method, notes with step photos) is behind **Edit details ›**.
+   - **Which notebook?** — tap one collection, or add a new one.
+   - **Categories** — tap chips; the page's best guesses are pre-ticked.
+   - **Tags** — tap chips, up to five.
+3. Click **Save to library**. The files land in `~/Downloads/RecipeClips/<name>/`.
    Full mode saves more files (one per step photo), so leaving "Ask where to save
    each file" off really helps.
+
+Basic saves the title, photo, ingredients and method; Full adds the notes, page
+prose and step photos.
 
 ## Import into the Mac app
 

@@ -190,9 +190,11 @@ public final class RecipeSearchIndex {
       guard let document = documents[recipe.id], let score = parsed.score(recipe, document: document, pantry: pantry) else { return nil }
       return (recipe, score)
     }.sorted {
+      // Best text match first, then alphabetical. Favourites are not pinned to the
+      // top; they are browsed via the Favourites section. (The Mac re-sorts anyway.)
       if $0.1 != $1.1 { return $0.1 > $1.1 }
-      if $0.0.favourite != $1.0.favourite { return $0.0.favourite }
-      return $0.0.title < $1.0.title
+      let order = $0.0.title.localizedStandardCompare($1.0.title)
+      return order == .orderedSame ? $0.0.id.uuidString < $1.0.id.uuidString : order == .orderedAscending
     }.map(\.0)
   }
 }

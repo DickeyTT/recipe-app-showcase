@@ -1,9 +1,9 @@
-# iPhone and iPad app
+# Native iPhone and iPad app
 
-Open `RecipeApp.xcodeproj`, select the **RecipeMobile** scheme and an iPhone or iPad simulator, and run. The target uses the local `RecipeCore` package and supports iOS/iPadOS 15 and later. No signing team is set; choose your own to run on a device.
+Open RecipeApp.xcodeproj and select RecipeMobile. The new target uses the local RecipeCore package with iOS/iPadOS 15 compatibility. No team, provisioning profile or release signing has been selected. Existing Mac signing/release settings are unchanged.
 
-The app is for browsing and cooking: collections, catalogue and ingredient search with filters, favourites, notes, offline photos and PDF references, view and cook counts, and cooking mode with "Keep screen on". Recipes are edited and imported on the Mac.
+The app provides adaptive NavigationView browsing (list/detail on iPad, navigation on iPhone), collection counts, catalogue/ingredient search and filters, favourites, notes, offline recipe/photos/PDF references, view/cook counts and shared cooking mode. Import a cleaned folder with its images/PDFs using the folder button. For a portable Mac export, import Recipes and Notes separately; do not import Recently deleted unless you want those recipes back. No cloud sync is present.
 
-Recipes arrive by syncing with the Mac app over the local network (the Sync button on each side). A Debug build adds a few sample recipes on first launch so the Simulator has something to show.
+Validation: shared Swift/Python suites plus an unsigned arm64 iOS Simulator compile and executable link with a 15.0 minimum OS. Scripts/check-ios.sh repeats that compile without launching the app. The restricted session cannot run Simulator or Xcode's nested package sandbox, so an Xcode build and interactive iPhone/iPad tests remain required. Use test recipes, never the live Mac library.
 
-`../Scripts/check-ios.sh` compiles and links the shared code and this app for iOS 15 without launching anything.
+Manual checks: launch on both devices; import twice; browse narrow/wide and rotate; use large accessibility text; search ingredient synonyms and tags; toggle a favourite and relaunch; open a PDF/page; start cooking, check ingredients, rotate, background/foreground and finish; confirm screen-awake resets and cooking count changes once. Device installation/signing is a separate user-controlled step.

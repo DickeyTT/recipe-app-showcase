@@ -77,8 +77,10 @@ public actor RecipeImageLoader {
   private let cache = NSCache<NSString, PlatformRecipeImage>()
 
   public init() {
-    cache.countLimit = 64
-    cache.totalCostLimit = 32 * 1024 * 1024
+    // Hold enough grid thumbnails that scrolling back through a large library does
+    // not re-decode. Hero-sized images are large but few are shown at once.
+    cache.countLimit = 240
+    cache.totalCostLimit = 64 * 1024 * 1024
   }
 
   public func image(at url: URL, maximumPixels: Int = 1600) -> PlatformRecipeImage? {

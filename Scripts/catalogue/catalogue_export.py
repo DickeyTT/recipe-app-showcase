@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""Prepare offline catalogue batches and validate human or AI-authored sidecars."""
+"""Prepare offline catalogue batches and validate human/Codex-authored sidecars."""
 import argparse
 import csv
 import hashlib
 import io
 import json
 import math
-import os
 from pathlib import Path
 import re
 import sys
@@ -16,8 +15,7 @@ from html.parser import HTMLParser
 from catalogue_rules import RULES_VERSION, apply_rules, load_tags
 
 PROJECT = Path(__file__).resolve().parents[2]
-# The original export that must never be written to. Set RECIPEAPP_SOURCE_EXPORT to protect yours.
-PROTECTED_SOURCE = Path(os.environ.get('RECIPEAPP_SOURCE_EXPORT', PROJECT / 'source-export')).resolve()
+PROTECTED_SOURCE = Path('/Users/rhfreedman/Desktop/Cooking/Export from new App').resolve()
 FIELDS = ['sourceFile', 'status', 'isRecipe', 'cleanTitle', 'categories', 'cuisine',
           'mainIngredient', 'ingredients', 'tags', 'likelyDuplicateOf', 'confidence', 'notes', 'error']
 ALIASES = json.loads((PROJECT / 'Sources/RecipeCore/Resources/ingredient-synonyms.json').read_text())['aliases']
@@ -240,7 +238,7 @@ def write_report(rows, root):
 
 DEFAULT_CATEGORIES = Path(__file__).with_name('categories.json')
 DEFAULT_TAGS = Path(__file__).with_name('tags.json')
-DEFAULT_NOTE = PROJECT / 'Scripts/catalogue/cataloguing-rules.md'
+DEFAULT_NOTE = PROJECT / 'Documents/Change-Note-2026-10-25.md'
 
 
 def rule_bundle(category_path, tag_path, note_path):
